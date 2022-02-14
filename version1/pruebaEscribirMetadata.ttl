@@ -1,0 +1,12 @@
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> dcterms:license <http://purl.org/dc/terms/1.0.0> .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> dcterms:creator "creador1" , "creador2" , "sergiocarulli" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> dcterms:contributor "contributor1" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> vann:preferredNamespacePrefix "abc" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> dcterms:title "metadatosdeprueba"@en .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> dcterms:description "estoesunapruebadelosmetadatosdelaontologia"@en .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> dcterms:bibliographicCitation "Citethisvocabularyas:ejemplodecitacion" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> owl:versionInfo "0.1.1" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> owl:versionIRI <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt/0.1.1> .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> dcterms:created "2022-2-13" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> owl:priorVersion "" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> vann:preferredNamespaceUri <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> .

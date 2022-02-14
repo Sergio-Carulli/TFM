@@ -1,0 +1,11 @@
+# Mandatory: y = create, n = non create
+
+ ontology= y
+requirements = y
+
+ tests  =  y 
+diagrams = n
+
+#Optionals: y = create, n = non create
+hola = y
+adios = n

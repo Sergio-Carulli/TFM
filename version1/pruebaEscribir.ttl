@@ -1,0 +1,16 @@
+@base <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt> rdf:type owl:Ontology .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix aux: <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> .
+aux:StudyRoom rdf:type owl:Class .
+aux:Location rdf:type owl:Class .
+aux:Hola rdf:type owl:Class .
+aux:isLocated rdf:type owl:ObjectProperty .
+aux:isLocated rdfs:domain aux:StudyRoom .
+aux:isLocated rdfs:range aux:Location .
+aux:hasPK rdf:type owl:DatatypeProperty .
+aux:hasPK rdfs:domain aux:StudyRoom .
+aux:hasPK rdfs:range xsd:int .

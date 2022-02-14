@@ -1,0 +1,23 @@
+#Required Information
+version=1
+ontology=http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt
+
+#Prefix
+  owl  =  http://www.w3.org/2002/07/owl#
+rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xsd=http://www.w3.org/2001/XMLSchema#
+rdfs=http://www.w3.org/2000/01/rdf-schema#
+
+aux=http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#
+
+#Class
+aux:StudyRoom
+
+aux:Location
+aux:Hola
+
+#Object Properties
+aux:StudyRoom  aux:isLocated aux:Location
+
+#Data Properties
+aux:StudyRoom   aux:hasPK  xsd:int
