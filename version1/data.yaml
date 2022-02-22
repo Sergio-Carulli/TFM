@@ -21,11 +21,33 @@
   logo:
   diagram:
 
---- # Website
-  domain: "wikipedia.org"
-  created-at: "January 15, 2001"
-  num-languages: 304
-  num-articles: 51360771
-  creator:
-    - Jimmy Wales
-    - Larry Sanger
+--- # Prefix
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  aux: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#
+
+--- # Class and metadata 
+  aux:StudyRoom: 
+    label: studyRoom
+    definition: a physical study room
+  aux:Location:
+  aux:Student: student
+
+--- # Object properties and metadata
+  aux:isLocated: 
+    domain: aux:StudyRoom
+    range: aux:Location
+  aux:go: 
+    domain: aux:Student
+    range:
+    label: go
+--- # data properties and metadata
+  aux:hasName: 
+    domain: aux:StudyRoom
+    range: string
+  aux:hasCapacity: 
+    domain: aux:StudyRoom
+    range:
+    label: capacity    

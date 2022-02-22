@@ -13,10 +13,13 @@ var metadata = data[0];
 //ontology
 if(metadata["ontology"] == undefined || metadata["ontology"] == null){
     console.log("ontology is undefined");
+    process.exit(-1);
 }
 else{
     ontology = metadata["ontology"];
 }
+content.push("\n# #################################################################\n# #\n# #    Meatada\n# #\n# #################################################################\n");
+content.push(`<${ontology}> a owl:Ontology .`);
 
 //license
 if(metadata["license"] == undefined || metadata["license"] == null){
@@ -179,5 +182,217 @@ else{
     content.push(`<${ontology}> foaf:depiction <${metadata["diagram"]}> .`);
 }
 
-console.log(content);
+//Read prefix
+var prefix = data[1];
+var names = Object.keys(prefix);
+content.unshift(`@prefix : <${ontology}> .`);
+names.forEach(name => {
+    content.unshift(`@prefix ${name}: <${prefix[name]}> .`);
+  });
 
+//Read class
+var classes = data[2];
+content.push("\n# #################################################################\n# #\n# #    Classes\n# #\n# #################################################################\n");
+var classes_names = Object.keys(classes);
+classes_names.forEach(name => {
+    var class_metadata = classes[name];
+    content.push(`${name} rdf:type owl:Class .`);
+    if(class_metadata != null){
+        //class label
+        if(class_metadata["label"] == undefined || class_metadata["label"] == null){
+            console.log(`${name} has not "label" defined`);
+        }
+        else{
+            content.push(`${name} rdfs:label ${class_metadata["label"]} .`);
+        }
+        //class comment
+        if(class_metadata["definition"] == undefined || class_metadata["definition"] == null){
+            console.log(`${name} has not "definition" defined`);
+        }
+        else{
+            content.push(`${name} rdfs:comment ${class_metadata["definition"]} .`);
+        }
+        //class example
+        if(class_metadata["example"] == undefined || class_metadata["example"] == null){
+            console.log(`${name} has not "example" defined`);
+        }
+        else{
+            content.push(`${name} vann:example ${class_metadata["example"]} .`);
+        }
+        //class status
+        if(class_metadata["status"] == undefined || class_metadata["status"] == null){
+            console.log(`${name} has not "status" defined`);
+        }
+        else{
+            content.push(`${name} sw:term status ${class_metadata["status"]} .`);
+        }
+        //class rationale
+        if(class_metadata["rationale"] == undefined || class_metadata["rationale"] == null){
+            console.log(`${name} has not "rationale" defined`);
+        }
+        else{
+            content.push(`${name} vaem:rationale ${class_metadata["rationale"]} .`);
+        }
+        //class source
+        if(class_metadata["source"] == undefined || class_metadata["source"] == null){
+            console.log(`${name} has not "source" defined`);
+        }
+        else{
+            content.push(`${name} dcterms:source ${class_metadata["source"]} .`);
+        }
+    }
+    else{
+        console.log(`${name} has not metadata defined`);
+    }
+  });
+
+//Read object properties
+var objectProperties = data[3]; 
+var objectProperties_names = Object.keys(objectProperties);
+content.push("\n# #################################################################\n# #\n# #    Object Properties\n# #\n# #################################################################\n");
+objectProperties_names.forEach(name => {
+    var class_metadata = objectProperties[name];
+    content.push(`${name} rdf:type owl:ObjectProperty .`);
+    if(class_metadata != null){
+        //object property domain
+        if(class_metadata["domain"] == undefined || class_metadata["domain"] == null){
+            console.log(`${name} has not "domain" defined`);
+        }
+        else{
+            content.push(`${name} rdfs:domain ${class_metadata["domain"]} .`);
+        }
+        //object property range
+        if(class_metadata["range"] == undefined || class_metadata["range"] == null){
+            console.log(`${name} has not "range" defined`);
+        }
+        else{
+            content.push(`${name} rdfs:range ${class_metadata["range"]} .`);
+        }
+        //object property label
+        if(class_metadata["label"] == undefined || class_metadata["label"] == null){
+            console.log(`${name} has not "label" defined`);
+        }
+        else{
+            content.push(`${name} rdfs:label ${class_metadata["label"]} .`);
+        }
+        //object property comment
+        if(class_metadata["definition"] == undefined || class_metadata["definition"] == null){
+            console.log(`${name} has not "definition" defined`);
+        }
+        else{
+            content.push(`${name} rdfs:comment ${class_metadata["definition"]} .`);
+        }
+        //object property example
+        if(class_metadata["example"] == undefined || class_metadata["example"] == null){
+            console.log(`${name} has not "example" defined`);
+        }
+        else{
+            content.push(`${name} vann:example ${class_metadata["example"]} .`);
+        }
+        //object property status
+        if(class_metadata["status"] == undefined || class_metadata["status"] == null){
+            console.log(`${name} has not "status" defined`);
+        }
+        else{
+            content.push(`${name} sw:term status ${class_metadata["status"]} .`);
+        }
+        //object property rationale
+        if(class_metadata["rationale"] == undefined || class_metadata["rationale"] == null){
+            console.log(`${name} has not "rationale" defined`);
+        }
+        else{
+            content.push(`${name} vaem:rationale ${class_metadata["rationale"]} .`);
+        }
+        //object property source
+        if(class_metadata["source"] == undefined || class_metadata["source"] == null){
+            console.log(`${name} has not "source" defined`);
+        }
+        else{
+            content.push(`${name} dcterms:source ${class_metadata["source"]} .`);
+        }
+    }
+    else{
+        console.log(`${name} has not metadata defined`);
+    }
+  });
+
+//Read data properties
+var dataProperties = data[4]; 
+var dataProperties_names = Object.keys(dataProperties);
+content.push("\n# #################################################################\n# #\n# #    Data Properties\n# #\n# #################################################################\n");
+dataProperties_names.forEach(name => {
+    var class_metadata = dataProperties[name];
+    content.push(`${name} rdf:type owl:DatatypeProperty .`);
+    if(class_metadata != null){
+        //object property domain
+        if(class_metadata["domain"] == undefined || class_metadata["domain"] == null){
+            console.log(`${name} has not "domain" defined`);
+        }
+        else{
+            content.push(`${name} rdfs:domain ${class_metadata["domain"]} .`);
+        }
+        //object property range
+        if(class_metadata["range"] == undefined || class_metadata["range"] == null){
+            console.log(`${name} has not "range" defined`);
+        }
+        else{
+            content.push(`${name} rdfs:range ${class_metadata["range"]} .`);
+        }
+        //object property label
+        if(class_metadata["label"] == undefined || class_metadata["label"] == null){
+            console.log(`${name} has not "label" defined`);
+        }
+        else{
+            content.push(`${name} rdfs:label ${class_metadata["label"]} .`);
+        }
+        //object property comment
+        if(class_metadata["definition"] == undefined || class_metadata["definition"] == null){
+            console.log(`${name} has not "definition" defined`);
+        }
+        else{
+            content.push(`${name} rdfs:comment ${class_metadata["definition"]} .`);
+        }
+        //object property example
+        if(class_metadata["example"] == undefined || class_metadata["example"] == null){
+            console.log(`${name} has not "example" defined`);
+        }
+        else{
+            content.push(`${name} vann:example ${class_metadata["example"]} .`);
+        }
+        //object property status
+        if(class_metadata["status"] == undefined || class_metadata["status"] == null){
+            console.log(`${name} has not "status" defined`);
+        }
+        else{
+            content.push(`${name} sw:term status ${class_metadata["status"]} .`);
+        }
+        //object property rationale
+        if(class_metadata["rationale"] == undefined || class_metadata["rationale"] == null){
+            console.log(`${name} has not "rationale" defined`);
+        }
+        else{
+            content.push(`${name} vaem:rationale ${class_metadata["rationale"]} .`);
+        }
+        //object property source
+        if(class_metadata["source"] == undefined || class_metadata["source"] == null){
+            console.log(`${name} has not "source" defined`);
+        }
+        else{
+            content.push(`${name} dcterms:source ${class_metadata["source"]} .`);
+        }
+    }
+    else{
+        console.log(`${name} has not metadata defined`);
+    }
+  });  
+  
+//Write in a file  
+var texto = content.join("\n");
+var outputFile = "pruebaEscribir.ttl";
+fs.writeFile(outputFile, texto, function (err) {
+  if (err) {
+      console.log(err);
+  } else {
+      console.log('The ttl file has been created successfully');
+  }
+});
