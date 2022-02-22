@@ -1,0 +1,31 @@
+--- # Metadata
+  ontology: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt
+  license: http://purl.org/dc/terms/1.0.0
+  creator: creator1, creator2, creator3
+  contributor: contributor1
+  prefix: abc
+  title: test metadata
+  description: This is a test of the ontoloyg metadata
+  citation: Cite this vocabulary as "example"
+  version: 0.1.1
+  abstract:
+  see also:
+  status:
+  backward compatibility:
+  incompatibility:
+  modification date:
+  issued date:
+  source:
+  publisher:
+  DOI:
+  logo:
+  diagram:
+
+--- # Website
+  domain: "wikipedia.org"
+  created-at: "January 15, 2001"
+  num-languages: 304
+  num-articles: 51360771
+  creator:
+    - Jimmy Wales
+    - Larry Sanger
