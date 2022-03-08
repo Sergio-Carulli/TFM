@@ -6,14 +6,13 @@
   prefix: abc
   title: test metadata
   description: This is a test of the ontoloyg metadata
-  citation: Cite this vocabulary as "example"
+  citation: Cite this vocabulary as example
   version: 0.1.1
   abstract:
   see also:
   status:
   backward compatibility:
   incompatibility:
-  modification date:
   issued date:
   source:
   publisher:
@@ -27,9 +26,15 @@
   xsd: http://www.w3.org/2001/XMLSchema#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   aux: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#
+  bibo: http://purl.org/ontology/bibo/
+  foaf: http://xmlns.com/foaf/0.1/
+  dcterms: http://purl.org/dc/terms/
+  vaem: http://www.linkedmodel.org/schema/vaem
+  vann: http://purl.org/vocab/vann/
+  sw: http://www.w3.org/2003/06/sw-vocab-status/ns#
 
 --- # Class and metadata 
-  aux:StudyRoom: 
+  StudyRoom: 
     label: studyRoom
     definition: a physical study room
   aux:Location:
@@ -37,7 +42,7 @@
 
 --- # Object properties and metadata
   aux:isLocated: 
-    domain: aux:StudyRoom
+    domain: StudyRoom
     range: aux:Location
   aux:go: 
     domain: aux:Student
@@ -50,4 +55,17 @@
   aux:hasCapacity: 
     domain: aux:StudyRoom
     range:
-    label: capacity    
+    label: capacity
+
+--- # Repo
+  ontologyPath: ../pruebaCrearRepo/ontology/prueba.ttl
+  localPath: ../pruebaCrearRepo
+  url: https://github.com/Sergio-Carulli/hb9h.git
+  folder:
+    ontology: y
+    requirements: y
+    tests: y
+    diagrams: n
+    empty:
+    nullFolder: null
+

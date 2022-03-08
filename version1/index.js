@@ -4,7 +4,8 @@ const createOntology = require('./createOntology');
 //Check the input
 //example of valid input:
 //node index.js "templatePath"
-if(process.argv.length != 4){
+//node index.js ./data.yaml
+if(process.argv.length != 3){
     console.log("The number of arguments is incorrect");
     process.exit(-1);
 }
@@ -14,5 +15,4 @@ if (!fs.existsSync(templatePath)) {
     process.exit(-1);
   }
 
-var outputPath = process.argv[3];
-createOntology.createOntology(templatePath,outputPath);  
+createOntology.createOntology(templatePath);  

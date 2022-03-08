@@ -1,9 +1,10 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
+const { exec } = require("child_process");
 
 var content = [];
 
-function createOntology(templatePath, outputPath){
+function createOntology(templatePath){
     var fileContents = fs.readFileSync(templatePath, 'utf8');
     var data = yaml.loadAll(fileContents);
     //Read metadata
@@ -22,13 +23,10 @@ function createOntology(templatePath, outputPath){
     var dataProperties = data[4]; 
     createDataProperties(dataProperties);
     var texto = content.join("\n");
-    fs.writeFile(outputPath,texto , function (err) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('The ttl file has been created successfully');
-        }
-      });
+    //Read create Repo
+    var repo = data[5];
+    createRepo(repo);
+    
 }
 
 function createMetadata(metadata){
@@ -80,7 +78,7 @@ function createMetadata(metadata){
         console.log("title is undefined");
     }
     else{
-        content.push(`<${ontology}> dcterms:title "${metadata["license"]}" .`);
+        content.push(`<${ontology}> dcterms:title "${metadata["title"]}" .`);
     }
 
     //description
@@ -203,6 +201,12 @@ function createMetadata(metadata){
     else{
         content.push(`<${ontology}> foaf:depiction <${metadata["diagram"]}> .`);
     }
+    //Fields which are filled automatically
+    var actualDate = new Date();
+    content.push(`<${ontology}> dcterms:created "${actualDate.getFullYear()}-${actualDate.getMonth()+1}-${actualDate.getDate()}" .`);
+    content.push(`<${ontology}> owl:priorVersion "" .`);
+    content.push(`<${ontology}> dcterms:modified "${actualDate.getFullYear()}-${actualDate.getMonth()+1}-${actualDate.getDate()}" .`);
+    content.push(`<${ontology}> vann:preferredNamespaceUri <${ontology}> .`); //Namespace URI
 }
 
 function createPrefix(prefix){
@@ -225,14 +229,14 @@ function createClass(classes){
                 console.log(`${name} has not "label" defined`);
             }
             else{
-                content.push(`${name} rdfs:label ${class_metadata["label"]} .`);
+                content.push(`${name} rdfs:label "${class_metadata["label"]}" .`);
             }
             //class comment
             if(class_metadata["definition"] == undefined || class_metadata["definition"] == null){
                 console.log(`${name} has not "definition" defined`);
             }
             else{
-                content.push(`${name} rdfs:comment ${class_metadata["definition"]} .`);
+                content.push(`${name} rdfs:comment "${class_metadata["definition"]}" .`);
             }
             //class example
             if(class_metadata["example"] == undefined || class_metadata["example"] == null){
@@ -295,14 +299,14 @@ function createObjectProperties(objectProperties){
                 console.log(`${name} has not "label" defined`);
             }
             else{
-                content.push(`${name} rdfs:label ${class_metadata["label"]} .`);
+                content.push(`${name} rdfs:label "${class_metadata["label"]}" .`);
             }
             //object property comment
             if(class_metadata["definition"] == undefined || class_metadata["definition"] == null){
                 console.log(`${name} has not "definition" defined`);
             }
             else{
-                content.push(`${name} rdfs:comment ${class_metadata["definition"]} .`);
+                content.push(`${name} rdfs:comment "${class_metadata["definition"]}" .`);
             }
             //object property example
             if(class_metadata["example"] == undefined || class_metadata["example"] == null){
@@ -365,14 +369,14 @@ function createDataProperties(dataProperties){
                 console.log(`${name} has not "label" defined`);
             }
             else{
-                content.push(`${name} rdfs:label ${class_metadata["label"]} .`);
+                content.push(`${name} rdfs:label "${class_metadata["label"]}" .`);
             }
             //object property comment
             if(class_metadata["definition"] == undefined || class_metadata["definition"] == null){
                 console.log(`${name} has not "definition" defined`);
             }
             else{
-                content.push(`${name} rdfs:comment ${class_metadata["definition"]} .`);
+                content.push(`${name} rdfs:comment "${class_metadata["definition"]}" .`);
             }
             //object property example
             if(class_metadata["example"] == undefined || class_metadata["example"] == null){
@@ -409,4 +413,79 @@ function createDataProperties(dataProperties){
     });  
 }
 
+function createRepo(repo){
+    //localPath is mandatory
+    if(repo["localPath"] == undefined || repo["localPath"] == null){
+        console.log("localPath is undefined");
+        process.exit(-1);
+    }
+    var localPath = repo["localPath"];
+    if (!fs.existsSync(localPath)) { //Check if the path exists
+        console.log(`The path ${localPath} does not exist`);
+        process.exit(-1);
+    }
+
+    //ontologyPath is mandatory
+    var ontologyPath = repo["ontologyPath"];
+    if(ontologyPath == undefined || ontologyPath == null){
+        console.log("ontologyPath is undefined");
+        process.exit(-1);
+    }
+
+    //Create the folder structure
+    var commands = [`cd ${localPath}`]
+    var folders = repo["folder"];
+    var names = Object.keys(folders);
+    names.forEach(name => {
+        if(folders[name] == 'y'){
+            commands.push(`mkdir ${name}`);
+        }
+    });
+    var command = commands.join(" && ");
+
+    exec(command, (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: Folders succesfully created`);
+        writeOntology(ontologyPath,localPath,repo["url"]);
+    });   
+}
+
+function writeOntology(ontologyPath,localPath,url){
+    var texto = content.join('\n');
+    fs.writeFile(ontologyPath,texto , function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('The ttl file has been created successfully');
+            uploadOntology(localPath,url);
+        }
+      });
+}
+
+function uploadOntology(localPath, url){
+    if(url == undefined || url == null){
+        console.log("url is undefined. It is not possible");
+    }
+    else{
+        var command = `cd ${localPath} && git init -b master && git add . && git commit -m "Initial Commit" && git remote add origin ${url} && git push origin master`;
+        exec(command, (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.log(`stderr: ${stderr}`);
+                return;
+            }
+            console.log(`stdout: Ontology succesfully upload`);
+        });  
+    }
+}
 module.exports.createOntology = createOntology;
