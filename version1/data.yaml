@@ -49,8 +49,8 @@
     label: capacity
 
 --- # Repo
-  repository local path:
-  ontology local path: ./pruebaCreateOntology2.ttl
+  repository local path: ../../pruebaCrearRepo/
+  ontology local path: ../../pruebaCrearRepo/pruebaCreateOntology2.ttl
   folder:
     ontology: y
     requirements: y
@@ -58,5 +58,5 @@
     diagrams: n
     empty:
     nullFolder: null
-  repository github url:
+  repository github url: https://github.com/Sergio-Carulli/prueba.git
 
