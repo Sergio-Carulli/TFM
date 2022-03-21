@@ -1,0 +1,71 @@
+@prefix aux: <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#> .
+@prefix sw: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix vaem: <http://www.linkedmodel.org/schema/vaem> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> .
+
+# #################################################################
+# #
+# #    Metadata
+# #
+# #################################################################
+
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> a owl:Ontology .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> dcterms:license <http://purl.org/dc/terms/0.1.1> .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> dcterms:creator "creator1"," creator2"," creator3" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> dcterms:contributor "contributor 1" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> vann:preferredNamespacePrefix "abc" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> dcterms:title "test metadata" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> dcterms:description "This is a test of the ontoloyg metadata" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> dcterms:bibliographicCitation "Cite this vocabulary as example" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> owl:versionInfo "0.1.1" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> owl:versionIRI <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#/0.1.1> .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> dcterms:created "2022-3-21" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> owl:priorVersion "" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> dcterms:modified "2022-3-21" .
+<http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> vann:preferredNamespaceUri <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#> .
+
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+
+:StudyRoom rdf:type owl:Class .
+:StudyRoom rdfs:label "studyRoom" .
+:StudyRoom rdfs:comment "a physical study room" .
+aux:Location rdf:type owl:Class .
+aux:Student rdf:type owl:Class .
+
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+
+aux:isLocated rdf:type owl:ObjectProperty .
+aux:isLocated rdfs:domain :StudyRoom .
+aux:isLocated rdfs:range aux:Location .
+:go rdf:type owl:ObjectProperty .
+:go rdfs:domain aux:Student .
+:go rdfs:label "go" .
+
+# #################################################################
+# #
+# #    Data Properties
+# #
+# #################################################################
+
+aux:hasName rdf:type owl:DatatypeProperty .
+aux:hasName rdfs:domain aux:StudyRoom .
+aux:hasName rdfs:range xsd:string .
+:hasCapacity rdf:type owl:DatatypeProperty .
+:hasCapacity rdfs:domain aux:StudyRoom .
+:hasCapacity rdfs:label "capacity" .

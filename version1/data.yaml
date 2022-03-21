@@ -1,8 +1,8 @@
 --- # Metadata
-  ontology: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt
-  license: http://purl.org/dc/terms/1.0.0
+  ontology: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#
+  license: http://purl.org/dc/terms/0.1.1
   creator: creator1, creator2, creator3
-  contributor: contributor1
+  contributor: contributor 1
   prefix: abc
   title: test metadata
   description: This is a test of the ontoloyg metadata
@@ -21,17 +21,8 @@
   diagram:
 
 --- # Prefix
-  owl: http://www.w3.org/2002/07/owl#
-  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-  xsd: http://www.w3.org/2001/XMLSchema#
-  rdfs: http://www.w3.org/2000/01/rdf-schema#
-  aux: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#
-  bibo: http://purl.org/ontology/bibo/
-  foaf: http://xmlns.com/foaf/0.1/
-  dcterms: http://purl.org/dc/terms/
-  vaem: http://www.linkedmodel.org/schema/vaem
-  vann: http://purl.org/vocab/vann/
-  sw: http://www.w3.org/2003/06/sw-vocab-status/ns#
+  aux: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#
+
 
 --- # Class and metadata 
   StudyRoom: 
@@ -44,7 +35,7 @@
   aux:isLocated: 
     domain: StudyRoom
     range: aux:Location
-  aux:go: 
+  go: 
     domain: aux:Student
     range:
     label: go
@@ -52,15 +43,14 @@
   aux:hasName: 
     domain: aux:StudyRoom
     range: string
-  aux:hasCapacity: 
+  hasCapacity: 
     domain: aux:StudyRoom
     range:
     label: capacity
 
 --- # Repo
-  ontologyPath: ../pruebaCrearRepo/ontology/prueba.ttl
-  localPath: ../pruebaCrearRepo
-  url: https://github.com/Sergio-Carulli/hb9h.git
+  repository local path:
+  ontology local path: ./pruebaCreateOntology2.ttl
   folder:
     ontology: y
     requirements: y
@@ -68,4 +58,5 @@
     diagrams: n
     empty:
     nullFolder: null
+  repository github url:
 

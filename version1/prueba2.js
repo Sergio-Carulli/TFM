@@ -19,11 +19,17 @@ function updateOntology(templatePath){
     //Read metadata
     var information = data[0];
     if(information["previousVersionOntologyPath"] == undefined || information["previousVersionOntologyPath"] == null){
-        console.log("ontology is undefined");
+        console.log("Ontology old path is undefined");
         process.exit(-1);
     }
-    
+
+    if(information["newOntologyPath"] == undefined || information["newOntologyPath"] == null){
+        console.log("Ontology new path is undefined");
+        process.exit(-1);
+    }
+
     ontologyPath = information["previousVersionOntologyPath"];
+    newOntologyPath = information["newOntologyPath"];
     
     if (!fs.existsSync(ontologyPath)) {
         console.log(`The file ${ontologyPath} does not exist`);
@@ -72,7 +78,7 @@ function updateOntology(templatePath){
     removeDataProperties(dataPropertiesRemove);
 
     //console.log(store.toNT());
-    writeOntology("./prueba.ttl");
+    writeOntology(newOntologyPath);
 
 }
 
@@ -460,7 +466,7 @@ function removeClasses(classesRemove){
             className = $rdf.sym(`${ontology}${name}`);
         }
         //Remove the class
-        store.removeMatches(className, undefined, undefined);
+        store.removeMany(className, undefined, undefined);
     });
 }
 
@@ -487,7 +493,7 @@ function removeObjectProperties(objectPropertiesRemove){
             objectProperties_name = $rdf.sym(`${ontology}${name}`);
         }
         //Remove the class
-        store.removeMatches(objectProperties_name, undefined, undefined);
+        store.removeMany(objectProperties_name, undefined, undefined);
     });
 }
 
@@ -514,12 +520,12 @@ function removeDataProperties(dataPropertiesRemove){
             dataProperties_name = $rdf.sym(`${ontology}${name}`);
         }
         //Remove the class
-        store.removeMatches(dataProperties_name, undefined, undefined);
+        store.removeMany(dataProperties_name, undefined, undefined);
     });
 }
 
 function writeOntology(ontologyPath){
-    fs.writeFile(ontologyPath, store.toNT() , function (err) {
+    fs.writeFile(ontologyPath, store.toNT().slice(1,-1) , function (err) {
         if (err) {
             console.log(err);
         } else {

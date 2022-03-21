@@ -1,16 +1,11 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 const $rdf = require('rdflib');
+const { exec } = require("child_process");
 
 var store = $rdf.graph();
-var templatePath = "./data.yaml";
 var ontology;
 var prefixes = new Map();
-createOntology(templatePath);
-
-
-
-
 
 function createOntology(templatePath){
     var fileContents = fs.readFileSync(templatePath, 'utf8');
@@ -43,11 +38,13 @@ function createOntology(templatePath){
 
     //Read data properties
     var dataProperties = data[4];
-   createDataProperties(dataProperties);
+    createDataProperties(dataProperties);
 
+    //writeOntology("./pruebaCreateOntology.ttl");
 
-    //console.log(store.toNT());
-    writeOntology("./prueba2.ttl");
+    //Read create Repo
+    var repo = data[5];
+    createRepo(repo);
 
 }
 
@@ -75,7 +72,9 @@ function createMetadata(metadata){
         console.log("creator is undefined");
     }
     else{
-        store.add($rdf.sym(ontology),$rdf.sym('http://purl.org/dc/terms/creator'),`${metadata["creator"].replace(/,/g,'","')}`);
+        metadata["creator"].split(',').forEach(element =>{
+            store.add($rdf.sym(ontology),$rdf.sym('http://purl.org/dc/terms/creator'),`${element.trim()}`);
+        });
     }
 
     //contributor
@@ -83,7 +82,9 @@ function createMetadata(metadata){
         console.log("contributor is undefined");
     }    
     else{
-        store.add($rdf.sym(ontology),$rdf.sym('http://purl.org/dc/terms/contributor'),`${metadata["contributor"].replace(/,/g,'","')}`);
+        metadata["contributor"].split(',').forEach(element =>{
+            store.add($rdf.sym(ontology),$rdf.sym('http://purl.org/dc/terms/contributor'),`${element.trim()}`);
+        });
     }
     
     //prefix
@@ -549,8 +550,62 @@ function createDataProperties(dataProperties){
     });  
 }
 
+function createRepo(repo){
+    //ontologyPath is mandatory
+    var ontologyPath = repo["ontology local path"];
+    if(ontologyPath == undefined || ontologyPath == null){
+        console.log("ontology local path is undefined");
+        process.exit(-1);
+    }
+
+    //If local path is defined, the folders are going to be created
+    var localPath = repo["repository local path"];
+    if(localPath != undefined && localPath != null){
+        
+        if (fs.existsSync(localPath)) { //Check if the path exists
+            //Create the folder structure
+            var commands = [`cd ${localPath}`]
+            var folders = repo["folder"];
+            var names = Object.keys(folders);
+            names.forEach(name => {
+                if(folders[name] == 'y'){
+                    commands.push(`mkdir ${name}`);
+                }
+            });
+            var command = commands.join(" & ");
+            command = command.replace("&","&&");
+
+            exec(command, (error, stdout, stderr) => {
+                if (error) {
+                    console.log(`error: ${error.message}`);
+                    return;
+                }
+                if (stderr) {
+                    console.log(`stderr: ${stderr}`);
+                    return;
+                }
+                console.log(`stdout: Folders succesfully created`);
+                writeOntology(ontologyPath);
+                uploadOntology(localPath,repo["repository github url"]);
+            });   
+        }
+        else{
+            console.log(`No such directory ${localPath}`);
+            process.exit(-1);
+        }
+
+    }
+    else{
+        console.log("Local path is not defined, the folders are not going to be created");
+        writeOntology(ontologyPath);
+    }
+    
+
+
+}
+
 function writeOntology(ontologyPath){
-    fs.writeFile(ontologyPath, store.toNT() , function (err) {
+    fs.writeFile(ontologyPath, store.toNT().slice(1,-1) , function (err) {
         if (err) {
             console.log(err);
         } else {
@@ -558,4 +613,26 @@ function writeOntology(ontologyPath){
         }
       });
 }
+
+function uploadOntology(localPath, url){
+    if(url == undefined || url == null){
+        console.log("Url is not defined. It is not possible to upload the repositoy to github");
+    }
+    else{
+        var command = `cd ${localPath} && git init -b master && git add . && git commit -m "Initial Commit" && git remote add origin ${url} && git push origin master`;
+        exec(command, (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.log(`stderr: ${stderr}`);
+                return;
+            }
+            console.log(`Ontology succesfully upload`);
+        });  
+    }
+}
+
+module.exports.createOntology = createOntology;
     

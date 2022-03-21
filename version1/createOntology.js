@@ -4,6 +4,8 @@ const { exec } = require("child_process");
 
 var content = [];
 
+createOntology("./data.yaml");
+
 function createOntology(templatePath){
     var fileContents = fs.readFileSync(templatePath, 'utf8');
     var data = yaml.loadAll(fileContents);
@@ -22,10 +24,14 @@ function createOntology(templatePath){
     //Read data properties
     var dataProperties = data[4]; 
     createDataProperties(dataProperties);
-    var texto = content.join("\n");
+
+    writeOntology("./prueba2CreateOntology.ttl");
+
+    /*
     //Read create Repo
     var repo = data[5];
     createRepo(repo);
+    */
     
 }
 
@@ -212,6 +218,17 @@ function createMetadata(metadata){
 function createPrefix(prefix){
     var names = Object.keys(prefix);
     content.unshift(`@prefix : <${ontology}> .`);
+    content.unshift("@prefix owl: <http://www.w3.org/2002/07/owl#> .");
+    content.unshift("@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .");
+    content.unshift("@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .");
+    content.unshift("@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .");
+    content.unshift("@prefix bibo: <http://purl.org/ontology/bibo/> .");
+    content.unshift("@prefix foaf: <http://xmlns.com/foaf/0.1/> .");
+    content.unshift("@prefix dcterms: <http://purl.org/dc/terms/> .");
+    content.unshift("@prefix vaem: <http://www.linkedmodel.org/schema/vaem> .");
+    content.unshift("@prefix vann: <http://purl.org/vocab/vann/> .");
+    content.unshift("@prefix sw: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .");
+
     names.forEach(name => {
         content.unshift(`@prefix ${name}: <${prefix[name]}> .`);
     });
@@ -222,7 +239,11 @@ function createClass(classes){
     var classes_names = Object.keys(classes);
     classes_names.forEach(name => {
         var class_metadata = classes[name];
+        if(!name.includes(':')){
+            name = ':'+name
+        }
         content.push(`${name} rdf:type owl:Class .`);
+
         if(class_metadata != null){
             //class label
             if(class_metadata["label"] == undefined || class_metadata["label"] == null){
@@ -278,6 +299,9 @@ function createObjectProperties(objectProperties){
     content.push("\n# #################################################################\n# #\n# #    Object Properties\n# #\n# #################################################################\n");
     objectProperties_names.forEach(name => {
         var class_metadata = objectProperties[name];
+        if(!name.includes(':')){
+            name = ':'+name
+        }
         content.push(`${name} rdf:type owl:ObjectProperty .`);
         if(class_metadata != null){
             //object property domain
@@ -285,14 +309,25 @@ function createObjectProperties(objectProperties){
                 console.log(`${name} has not "domain" defined`);
             }
             else{
-                content.push(`${name} rdfs:domain ${class_metadata["domain"]} .`);
+                if(class_metadata["domain"].includes(':')){
+                    content.push(`${name} rdfs:domain ${class_metadata["domain"]} .`);
+                }
+                else{
+                    content.push(`${name} rdfs:domain :${class_metadata["domain"]} .`);
+                }
+                
             }
             //object property range
             if(class_metadata["range"] == undefined || class_metadata["range"] == null){
                 console.log(`${name} has not "range" defined`);
             }
             else{
-                content.push(`${name} rdfs:range ${class_metadata["range"]} .`);
+                if(class_metadata["range"].includes(':')){
+                    content.push(`${name} rdfs:range ${class_metadata["range"]} .`);
+                }
+                else{
+                    content.push(`${name} rdfs:range :${class_metadata["range"]} .`);
+                }
             }
             //object property label
             if(class_metadata["label"] == undefined || class_metadata["label"] == null){
@@ -348,6 +383,9 @@ function createDataProperties(dataProperties){
     content.push("\n# #################################################################\n# #\n# #    Data Properties\n# #\n# #################################################################\n");
     dataProperties_names.forEach(name => {
         var class_metadata = dataProperties[name];
+        if(!name.includes(':')){
+            name = ':'+name
+        }
         content.push(`${name} rdf:type owl:DatatypeProperty .`);
         if(class_metadata != null){
             //object property domain
@@ -355,14 +393,20 @@ function createDataProperties(dataProperties){
                 console.log(`${name} has not "domain" defined`);
             }
             else{
-                content.push(`${name} rdfs:domain ${class_metadata["domain"]} .`);
+                if(class_metadata["domain"].includes(':')){
+                    content.push(`${name} rdfs:domain ${class_metadata["domain"]} .`);
+                }
+                else{
+                    content.push(`${name} rdfs:domain :${class_metadata["domain"]} .`);
+                }
+            
             }
             //object property range
             if(class_metadata["range"] == undefined || class_metadata["range"] == null){
                 console.log(`${name} has not "range" defined`);
             }
             else{
-                content.push(`${name} rdfs:range ${class_metadata["range"]} .`);
+                content.push(`${name} rdfs:range xsd:${class_metadata["range"]} .`);
             }
             //object property label
             if(class_metadata["label"] == undefined || class_metadata["label"] == null){
@@ -413,6 +457,7 @@ function createDataProperties(dataProperties){
     });  
 }
 
+/*
 function createRepo(repo){
     //localPath is mandatory
     if(repo["localPath"] == undefined || repo["localPath"] == null){
@@ -456,19 +501,20 @@ function createRepo(repo){
         writeOntology(ontologyPath,localPath,repo["url"]);
     });   
 }
-
-function writeOntology(ontologyPath,localPath,url){
+*/
+function writeOntology(ontologyPath){
     var texto = content.join('\n');
     fs.writeFile(ontologyPath,texto , function (err) {
         if (err) {
             console.log(err);
         } else {
             console.log('The ttl file has been created successfully');
-            uploadOntology(localPath,url);
+            //uploadOntology(localPath,url);
         }
       });
 }
 
+/*
 function uploadOntology(localPath, url){
     if(url == undefined || url == null){
         console.log("url is undefined. It is not possible");
@@ -488,4 +534,5 @@ function uploadOntology(localPath, url){
         });  
     }
 }
+*/
 module.exports.createOntology = createOntology;

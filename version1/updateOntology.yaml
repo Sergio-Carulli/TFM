@@ -1,9 +1,14 @@
 --- # Ontology Information
-  previousVersionOntologyPath: ../pruebaCrearRepo/ontology/prueba.ttl
+  previousVersionOntologyPath: ./prueba2CreateOntology.ttl
   version: 1.0.0
+  newOntologyPath: ./pruebaOntologyUpdate.ttl
 
 --- # Prefixes
   aux: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#
+
+--- # Remove classes
+  aux:StudyRoom:
+  aux:Location2:
 
 --- # Add classes
   StudyRoom2: 
@@ -17,8 +22,8 @@
   Student2: student 
   aux3:ThisIsWrong:
 
---- # Remove classes
-  aux:StudyRoom:
+--- # Remove Object properties
+  aux:isLocated:
 
 --- # Add Object properties
   aux:isLocated2: 
@@ -29,9 +34,11 @@
     range:
     label: go
 
---- # Remove Object properties
   aux:isLocated:
 
+--- # Remove data properties
+  aux:hasName:
+  
 --- # Add data properties
   aux:hasName2: 
     domain: aux:StudyRoom
@@ -41,5 +48,3 @@
     range:
     label: capacity
   
---- # Remove data properties
-  aux:hasName:
