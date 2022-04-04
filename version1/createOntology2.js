@@ -586,7 +586,7 @@ function createRepo(repo){
                 }
                 console.log(`stdout: Folders succesfully created`);
                 writeOntology(ontologyPath);
-                uploadOntology(localPath,repo["repository github url"]);
+                //uploadOntology(localPath,repo["repository github url"]);
             });   
         }
         else{
@@ -605,6 +605,8 @@ function createRepo(repo){
 }
 
 function writeOntology(ontologyPath){
+    console.log(store.toNT());
+    /*
     fs.writeFile(ontologyPath, store.toNT().slice(1,-1) , function (err) {
         if (err) {
             console.log(err);
@@ -612,6 +614,7 @@ function writeOntology(ontologyPath){
             console.log('The ttl file has been created successfully');
         }
       });
+      */
 }
 
 function uploadOntology(localPath, url){

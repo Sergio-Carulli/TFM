@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Sergio-Carulli/TFM#readme",
   "dependencies": {
     "js-yaml": "^4.1.0",
+    "n3": "^1.16.0",
     "rdflib": "^2.2.17"
   }
 }
