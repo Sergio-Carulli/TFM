@@ -1,7 +1,8 @@
 --- # Ontology Information
-  previousVersionOntologyPath: ./prueba2CreateOntology.ttl
-  version: 1.0.0
-  newOntologyPath: ./pruebaOntologyUpdate.ttl
+  ontology previous version local path: ../../../../pruebaCrearRepo/Current/Ontology/ontology.ttl
+  new version: 2.0.1
+  github username: 
+  github email: 
 
 --- # Prefixes
   aux: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#

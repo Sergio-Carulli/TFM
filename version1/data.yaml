@@ -7,7 +7,6 @@
   title: test metadata
   description: This is a test of the ontoloyg metadata
   citation: Cite this vocabulary as example
-  version: 0.1.1
   abstract:
   see also:
   status:
@@ -35,28 +34,22 @@
   aux:isLocated: 
     domain: StudyRoom
     range: aux:Location
-  go: 
+  aux:go: 
     domain: aux:Student
     range:
     label: go
 --- # data properties and metadata
   aux:hasName: 
-    domain: aux:StudyRoom
+    domain: StudyRoom
     range: string
-  hasCapacity: 
-    domain: aux:StudyRoom
+  aux:hasCapacity: 
+    domain: StudyRoom
     range:
     label: capacity
 
 --- # Repo
-  repository local path: ../../pruebaCrearRepo/
-  ontology local path: ../../pruebaCrearRepo/pruebaCreateOntology2.ttl
-  folder:
-    ontology: y
-    requirements: y
-    tests: y
-    diagrams: n
-    empty:
-    nullFolder: null
-  repository github url: https://github.com/Sergio-Carulli/prueba2.git
+  repository local path: ../../../../pruebaCrearRepo
+  url: https://github.com/Sergio-Carulli/prueba38.git
+  github username: Sergio-Carulli
+  github email: sergiomario.carulli.perez@alumnos.upm.es
 
