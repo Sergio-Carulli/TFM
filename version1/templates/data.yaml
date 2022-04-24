@@ -1,0 +1,55 @@
+--- # Metadata
+  ontology: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#
+  license: http://purl.org/dc/terms/0.1.1
+  creator: creator1, creator2, creator3
+  contributor: contributor 1
+  prefix: abc
+  title: test metadata
+  description: This is a test of the ontoloyg metadata
+  citation: Cite this vocabulary as example
+  abstract:
+  see also:
+  status:
+  backward compatibility:
+  incompatibility:
+  issued date:
+  source:
+  publisher:
+  DOI:
+  logo:
+  diagram:
+
+--- # Prefix
+  aux: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#
+
+
+--- # Class and metadata 
+  StudyRoom: 
+    label: studyRoom
+    definition: a physical study room
+  aux:Location:
+  aux:Student: student
+
+--- # Object properties and metadata
+  aux:isLocated: 
+    domain: StudyRoom
+    range: aux:Location
+  aux:go: 
+    domain: aux:Student
+    range:
+    label: go
+--- # data properties and metadata
+  aux:hasName: 
+    domain: StudyRoom
+    range: string
+  aux:hasCapacity: 
+    domain: StudyRoom
+    range:
+    label: capacity
+
+--- # Repo
+  repository local path: ../../../../pruebaCrearRepo3
+  url: https://github.com/Sergio-Carulli/prueba3.git
+  github username: Sergio-Carulli
+  github email: sergiomario.carulli.perez@alumnos.upm.es
+
