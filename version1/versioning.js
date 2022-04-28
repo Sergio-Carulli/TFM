@@ -163,6 +163,54 @@ function updateRepo(localPath, username, email) {
                 };
             });
 
+            writeNewFiles(localPath,newVersion)
+                .then(copyCurrentVersion(`${localPath}/../../../Release/${newVersion}`, `${localPath}/../..`))
+                .then(uploadOntology(`${localPath}/../../../`, username, email));
+            /*
+            var text = '#Diagrams\n'
+            writeREADME(`${localPath}/../../../Release/${newVersion}/Diagrams/README.md`, text, function (err){
+                
+               
+                    text = '#Test\n'
+                    writeREADME(`${localPath}/../../../Release/${newVersion}/Test/README.md`, text, function (err){
+                        if(err){
+                            console.log(err);
+                            return;
+                        }
+                        else{
+                            writeOntology(`${localPath}/../../../Release/${newVersion}/Ontology/ontology.ttl`, function(err){
+                                if(err){
+                                    console.log(err);
+                                    return;
+                                }
+                                else{
+                                    emptyDirectory(`${localPath}/../..`, function (err){
+                                        if(err){
+                                            console.log(err);
+                                            return;
+                                        }
+                                        else{
+                                            copyCurrentVersion(`${localPath}/../../../Release/${newVersion}`, `${localPath}/../..`, function (err) {
+                                                if(err){
+                                                    console.log(err);
+                                                    return;
+                                                }
+                                                else{
+                                                    uploadOntology(`${localPath}/../../../`, username, email)
+                                                }
+                                            });
+                                        }
+                                    });
+                                }    
+                            });
+
+                        }
+                    });
+
+                
+            });
+        */
+/*
             //Create README.md in each folder
             var text = '#Diagrams\n'
             writeREADME(`${localPath}/../../../Release/${newVersion}/Diagrams/README.md`, text);
@@ -180,6 +228,7 @@ function updateRepo(localPath, username, email) {
 
             //Commit to github
             uploadOntology(`${localPath}/../../../`, username, email)
+*/
         }
         else {
             console.log(`The directory ${localPath} does not exists. The repository can not be stored in that path`);
@@ -205,6 +254,23 @@ function writeOntology(ontologyPath) {
     }));
 }
 
+function writeNewFiles(localPath,newVersion){
+    return new Promise((resolve, reject) => {
+        //Create README.md in each folder
+        var text = '#Diagrams\n'
+        writeREADME(`${localPath}/../../../Release/${newVersion}/Diagrams/README.md`, text);
+        text = '#Test\n'
+        writeREADME(`${localPath}/../../../Release/${newVersion}/Test/README.md`, text);
+
+        //Write ontology in the folder release
+        writeOntology(`${localPath}/../../../Release/${newVersion}/Ontology/ontology.ttl`);
+
+        //Remove Current directory
+        emptyDirectory(`${localPath}/../..`);
+        return resolve();
+    });
+}
+
 function writeREADME(readmePath, text) {
     fs.writeFile(readmePath, text, function (err) {
         if (err) {
@@ -228,14 +294,19 @@ function emptyDirectory(directory) {
 }
 
 function copyCurrentVersion(src, dest) {
-    fs.copy(src, dest, (err) => {
-        if (err) {
-            console.log("Error Found:", err);
-        }
-        else {
-            console.log('File copied succesfully');
-        }
+    return new Promise((resolve, reject) => {
+        fs.copy(src, dest, (err) => {
+            if (err) {
+                console.log("Error Found:", err);
+                return reject();
+            }
+            else {
+                console.log('File copied succesfully');
+                return resolve();
+            }
+        });
     });
+    
 }
 
 function uploadOntology(localPath, username, email) {
