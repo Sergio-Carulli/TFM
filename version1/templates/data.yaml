@@ -48,8 +48,8 @@
     label: capacity
 
 --- # Repo
-  repository local path: ../../../../pruebaCrearRepo3
-  url: https://github.com/Sergio-Carulli/prueba3.git
+  repository local path: ../../../../pruebaOrdenadorTorre
+  url: https://github.com/Sergio-Carulli/pruebaOrdenadorTorre.git
   github username: Sergio-Carulli
   github email: sergiomario.carulli.perez@alumnos.upm.es
 

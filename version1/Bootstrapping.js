@@ -33,9 +33,9 @@ var prefixes = {
 
 var variables = {}
 
-createOntology('./templates/data.yaml');
+//createOntology('./templates/data.yaml');
 
-function createOntology(templatePath) {
+export default function createOntology(templatePath) {
     var fileContents = fs.readFileSync(templatePath, 'utf8');
     var data = yaml.loadAll(fileContents);
 
@@ -965,5 +965,3 @@ function uploadOntology(localPath, url, username, email) {
         });
     }
 }
-
-//module.exports.createOntology = createOntology;

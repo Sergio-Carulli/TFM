@@ -1,11 +1,11 @@
-const fs = require('fs');
-const createOntology2 = require('./createOntology2');
-const updateOntology = require('./updateOntology');
+import fs from 'fs';
+import createOntology from './Bootstrapping.js';
+import updateOntology from './versioning.js';
 
 //Check the input
 //example of valid input:
-//node index.js --create ./data.yaml
-//node index.js --update ./updateOntology.yaml
+//node index.js --bootstrapping ./templates/data.yaml
+//node index.js --versioning ./templates/updateOntology.yaml
 if(process.argv.length != 4){
     console.log("The number of arguments is incorrect");
     process.exit(-1);
@@ -16,11 +16,11 @@ if(!fs.existsSync(templatePath)){
     console.log(`The file ${templatePath} does not exist`);
     process.exit(-1);
   }
-if(mode == "--create"){
-  createOntology2.createOntology(templatePath);
+if(mode == "--bootstrapping"){
+  createOntology(templatePath);
 }
-else if(mode == "--update"){
-  updateOntology.updateOntology(templatePath);
+else if(mode == "--versioning"){
+  updateOntology(templatePath);
 }
 else{
   console.log(`The argument ${mode} is not recognize`);

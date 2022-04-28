@@ -17,15 +17,14 @@ const { namedNode, literal, defaultGraph, quad } = DataFactory;
 import child_process from 'child_process'
 const { exec } = child_process;
 
-var templatePath = "./templates/updateOntology.yaml";
 var parser = new N3.Parser();
 var writer = new N3.Writer();
 var store = new N3.Store();
 var ontology;
 var newVersion;
-updateOntology(templatePath)
+//updateOntology(./templates/updateOntology.yaml)
 
-function updateOntology(templatePath) {
+export default function updateOntology(templatePath) {
     var fileContents = fs.readFileSync(templatePath, 'utf8');
     var data = yaml.loadAll(fileContents);
 
