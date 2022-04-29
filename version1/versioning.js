@@ -22,7 +22,7 @@ var writer = new N3.Writer();
 var store = new N3.Store();
 var ontology;
 var newVersion;
-//updateOntology(./templates/updateOntology.yaml)
+//updateOntology('./templates/updateOntology.yaml')
 
 export default function updateOntology(templatePath) {
     var fileContents = fs.readFileSync(templatePath, 'utf8');
@@ -163,72 +163,20 @@ function updateRepo(localPath, username, email) {
                 };
             });
 
-            writeNewFiles(localPath,newVersion)
-                .then(copyCurrentVersion(`${localPath}/../../../Release/${newVersion}`, `${localPath}/../..`))
-                .then(uploadOntology(`${localPath}/../../../`, username, email));
-            /*
-            var text = '#Diagrams\n'
-            writeREADME(`${localPath}/../../../Release/${newVersion}/Diagrams/README.md`, text, function (err){
-                
-               
-                    text = '#Test\n'
-                    writeREADME(`${localPath}/../../../Release/${newVersion}/Test/README.md`, text, function (err){
-                        if(err){
-                            console.log(err);
-                            return;
-                        }
-                        else{
-                            writeOntology(`${localPath}/../../../Release/${newVersion}/Ontology/ontology.ttl`, function(err){
-                                if(err){
-                                    console.log(err);
-                                    return;
-                                }
-                                else{
-                                    emptyDirectory(`${localPath}/../..`, function (err){
-                                        if(err){
-                                            console.log(err);
-                                            return;
-                                        }
-                                        else{
-                                            copyCurrentVersion(`${localPath}/../../../Release/${newVersion}`, `${localPath}/../..`, function (err) {
-                                                if(err){
-                                                    console.log(err);
-                                                    return;
-                                                }
-                                                else{
-                                                    uploadOntology(`${localPath}/../../../`, username, email)
-                                                }
-                                            });
-                                        }
-                                    });
-                                }    
-                            });
-
-                        }
-                    });
-
-                
-            });
-        */
-/*
-            //Create README.md in each folder
-            var text = '#Diagrams\n'
-            writeREADME(`${localPath}/../../../Release/${newVersion}/Diagrams/README.md`, text);
-            text = '#Test\n'
-            writeREADME(`${localPath}/../../../Release/${newVersion}/Test/README.md`, text);
-
-            //Write ontology in the folder release
-            writeOntology(`${localPath}/../../../Release/${newVersion}/Ontology/ontology.ttl`);
-
-            //Remove Current directory
-            emptyDirectory(`${localPath}/../..`);
-
-            //Copy the ontology to folder Current
-            copyCurrentVersion(`${localPath}/../../../Release/${newVersion}`, `${localPath}/../..`);
-
-            //Commit to github
-            uploadOntology(`${localPath}/../../../`, username, email)
-*/
+            writeNewFiles(localPath, newVersion)
+                .then(function () {
+                    copyCurrentVersion(`${localPath}/../../../Release/${newVersion}`, `${localPath}/../..`)
+                        .then(function () {
+                            uploadOntology(`${localPath}/../../../`, username, email);
+                        })
+                        .catch(function () {
+                            console.log('error en la copia');
+                        });
+                })
+                .catch(function () {
+                    console.log('error al escribir los archivos en release');
+                });
+            //.then(uploadOntology(`${localPath}/../../../`, username, email));
         }
         else {
             console.log(`The directory ${localPath} does not exists. The repository can not be stored in that path`);
@@ -254,7 +202,7 @@ function writeOntology(ontologyPath) {
     }));
 }
 
-function writeNewFiles(localPath,newVersion){
+function writeNewFiles(localPath, newVersion) {
     return new Promise((resolve, reject) => {
         //Create README.md in each folder
         var text = '#Diagrams\n'
@@ -265,9 +213,11 @@ function writeNewFiles(localPath,newVersion){
         //Write ontology in the folder release
         writeOntology(`${localPath}/../../../Release/${newVersion}/Ontology/ontology.ttl`);
 
-        //Remove Current directory
         emptyDirectory(`${localPath}/../..`);
-        return resolve();
+        setTimeout(() => {
+            resolve();
+        }, 2000);
+
     });
 }
 
@@ -282,31 +232,32 @@ function writeREADME(readmePath, text) {
 }
 
 function emptyDirectory(directory) {
-    //remove directory
-    rimraf(directory, function () {
-        //create empty directory
-        fs.mkdirSync(directory, (err) => {
-            if (err) {
-                console.log(err);
-            };
+    return new Promise((resolve, reject) => {
+        //remove directory
+        rimraf(directory, function () {
+            //create empty directory
+            fs.mkdirSync(directory, (err) => {
+                if (err) {
+                    console.log(err);
+                };
+            });
         });
     });
+
 }
 
-function copyCurrentVersion(src, dest) {
-    return new Promise((resolve, reject) => {
-        fs.copy(src, dest, (err) => {
-            if (err) {
-                console.log("Error Found:", err);
-                return reject();
-            }
-            else {
-                console.log('File copied succesfully');
-                return resolve();
-            }
-        });
+async function copyCurrentVersion(src, dest) {
+    fs.copy(src, dest, (err) => {
+        if (err) {
+            console.log("Error Found:", err);
+
+        }
+        else {
+            console.log('File copied succesfully');
+
+        }
     });
-    
+
 }
 
 function uploadOntology(localPath, username, email) {
