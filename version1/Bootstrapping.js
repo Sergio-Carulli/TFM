@@ -818,32 +818,57 @@ function createRepo(repo) {
                     console.log(err);
                 };
             });
-            fs.mkdirSync(`${localPath}/Documentation`, (err) => {
-                if (err) {
-                    console.log(err);
-                };
-            });
-            fs.mkdirSync(`${localPath}/Requirements`, (err) => {
-                if (err) {
-                    console.log(err);
-                };
-            });
             fs.mkdirSync(`${localPath}/Current`, (err) => {
                 if (err) {
                     console.log(err);
                 };
             });
-            fs.mkdirSync(`${localPath}/Release/1.0.0/Ontology`, { recursive: true }, (err) => {
+            fs.mkdirSync(`${localPath}/Data`, (err) => {
                 if (err) {
                     console.log(err);
                 };
             });
-            fs.mkdirSync(`${localPath}/Release/1.0.0/Diagrams`, (err) => {
+            fs.mkdirSync(`${localPath}/Current/Ontology`, { recursive: true }, (err) => {
                 if (err) {
                     console.log(err);
                 };
             });
-            fs.mkdirSync(`${localPath}/Release/1.0.0/Test`, (err) => {
+            fs.mkdirSync(`${localPath}/Current/Diagrams`, (err) => {
+                if (err) {
+                    console.log(err);
+                };
+            });
+            fs.mkdirSync(`${localPath}/Current/Test`, (err) => {
+                if (err) {
+                    console.log(err);
+                };
+            });
+            fs.mkdirSync(`${localPath}/Current/Documentation`, (err) => {
+                if (err) {
+                    console.log(err);
+                };
+            });
+            fs.mkdirSync(`${localPath}/Current/Requirements`, (err) => {
+                if (err) {
+                    console.log(err);
+                };
+            });
+            fs.mkdirSync(`${localPath}/Current/Requirements/ORSD`, (err) => {
+                if (err) {
+                    console.log(err);
+                };
+            });
+            fs.mkdirSync(`${localPath}/Current/Requirements/finalVersion`, (err) => {
+                if (err) {
+                    console.log(err);
+                };
+            });
+            fs.mkdirSync(`${localPath}/Current/Requirements/testSuite`, (err) => {
+                if (err) {
+                    console.log(err);
+                };
+            });
+            fs.mkdirSync(`${localPath}/Data/useCases`, (err) => {
                 if (err) {
                     console.log(err);
                 };
@@ -851,22 +876,48 @@ function createRepo(repo) {
             //Create README.md in each folder
             text = '#Release\n The previous versions of the ontology are going to be stored in this folder.\nEach version is stored in a folder whose name is the ontology version.'
             writeREADME(`${localPath}/Release/README.md`, text);
-            text = '#Documentation\n'
-            writeREADME(`${localPath}/Documentation/README.md`, text);
-            text = '#Requirements\n'
-            writeREADME(`${localPath}/Requirements/README.md`, text);
-            text = '#Current\n'
-            writeREADME(`${localPath}/Current/README.md`, text);
-            text = '#Diagrams\n'
-            writeREADME(`${localPath}/Release/1.0.0/Diagrams/README.md`, text);
-            text = '#Test\n'
-            writeREADME(`${localPath}/Release/1.0.0/Test/README.md`, text);
 
-            //Write the ontology in folder Release
-            writeOntology(`${localPath}/Release/1.0.0/Ontology/ontology.ttl`);
+            text = '#Data\n Se almacenaran todos los datos de entrada menos los use cases'
+            writeREADME(`${localPath}/Data/README.md`, text);
+
+            text = '#Current\n Ultima version de la ontologia. Con las mismas carpetas que las versiones de release'
+            writeREADME(`${localPath}/Current/README.md`, text);
+
+            //Create README.md in each subfolder of Current
+            text = '#Ontology\n Para guardar el ttl con la ontología'
+            writeREADME(`${localPath}/Current/Ontology/README.md`, text);
+
+            text = '#Diagrams\n Para guardar imagenes con los diagramas'
+            writeREADME(`${localPath}/Current/Diagrams/README.md`, text);
+
+            text = '#Test\n Para guardar las sparql queries de ejemplo'
+            writeREADME(`${localPath}/Current/Test/README.md`, text);
+
+            text = '#Documentation\n Documentacion html'
+            writeREADME(`${localPath}/Current/Documentation/README.md`, text);
+
+            text = '#Requirements\n Se almacenara todo lo que incluyan los requirements'
+            writeREADME(`${localPath}/Current/Requirements/README.md`, text);
+
+            //Create README.md in each subfolder of Requirements
+            text = '#ORSD\n Se almacenara el ORSD'
+            writeREADME(`${localPath}/Current/Requirements/ORSD/README.md`, text);
+
+            text = '#Requirements Final Version\n Se almacenara la version final de los requirements'
+            writeREADME(`${localPath}/Current/Requirements/finalVersion/README.md`, text);
+
+            text = '#Test Suite\n Se almacenara los test suites'
+            writeREADME(`${localPath}/Current/Requirements/testSuite/README.md`, text);
+
+            //Create README.md in each subfolder of data
+            text = '#Use Cases\n Se almacenaran los uses cases'
+            writeREADME(`${localPath}/Data/useCases/README.md`, text);
+
+            //Write the ontology in folder Current
+            writeOntology(`${localPath}/Current/Ontology/ontology.ttl`);
 
             //Copy the ontology to folder Current
-            copyCurrentVersion(`${localPath}/Release/1.0.0`, `${localPath}/Current`);
+            //copyCurrentVersion(`${localPath}/Release/1.0.0`, `${localPath}/Current`);
 
             //Upload ontology to github
             uploadOntology(localPath, repo['url'], repo['github username'], repo['github email']);

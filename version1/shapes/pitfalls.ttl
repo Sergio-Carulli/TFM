@@ -1,0 +1,34 @@
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix sarefsh: <https://saref.etsi.org/shape#> .
+@prefix schema: <http://schema.org/> .
+
+sarefsh:range a sh:NodeShape ;
+  sh:targetClass owl:DatatypeProperty;
+  sh:severity sh:Violation ;
+  sh:or (
+    [ sh:nodeKind sh:BlankNode ]
+    [ sh:property [ 
+        sh:path rdfs:range ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI
+    ]]
+  ) .
+
+sarefsh:domain a sh:NodeShape ;
+  sh:targetClass owl:ObjectProperty, owl:DatatypeProperty;
+  sh:severity sh:Violation ;
+  sh:or (
+    [ sh:nodeKind sh:BlankNode ]
+    [ sh:property [ 
+        sh:path rdfs:domain ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI 
+    ]]
+  ) .

@@ -48,8 +48,8 @@
     label: capacity
 
 --- # Repo
-  repository local path: ../../../../pruebaOrdenadorTorre
-  url: https://github.com/Sergio-Carulli/pruebaOrdenadorTorre.git
+  repository local path: ../../../../pruebaOrdenadorTorre2
+  url: https://github.com/Sergio-Carulli/pruebaOrdenadorTorre2.git
   github username: Sergio-Carulli
   github email: sergiomario.carulli.perez@alumnos.upm.es
 

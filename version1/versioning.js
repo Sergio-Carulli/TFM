@@ -22,6 +22,7 @@ var writer = new N3.Writer();
 var store = new N3.Store();
 var ontology;
 var newVersion;
+var oldVersion;
 //updateOntology('./templates/updateOntology.yaml')
 
 export default function updateOntology(templatePath) {
@@ -73,8 +74,11 @@ async function readOntology(ontologyPath) {
         parser.parse(fileContents, (error, quad, prefixes) => {
             if (quad) {
                 //console.log(quad);
-                //console.log(quad);
                 quads.push(quad);
+                //console.log(quad.predicate.id);
+                if(quad.predicate.id == 'http://www.w3.org/2002/07/owl#versionInfo'){
+                    oldVersion = quad.object.id.slice(1, -1);
+                }
                 //writer.addQuad(quad);
             }
             else {
@@ -147,22 +151,43 @@ function updateRepo(localPath, username, email) {
         //Check if the path exists
         if (fs.existsSync(localPath)) {
             //Create the new folder in release
-            fs.mkdirSync(`${localPath}/../../../Release/${newVersion}/Ontology`, { recursive: true }, (err) => {
+            fs.mkdirSync(`${localPath}/../../../Release/${oldVersion}`, { recursive: true }, (err) => {
                 if (err) {
                     console.log(err);
                 };
             });
-            fs.mkdirSync(`${localPath}/../../../Release/${newVersion}/Diagrams`, (err) => {
+            fs.copy(`${localPath}/../..`, `${localPath}/../../../Release/${oldVersion}`, (err) => {
                 if (err) {
-                    console.log(err);
-                };
+                    console.log("Error Found:", err);
+        
+                }
+                else {
+                    console.log('File copied succesfully');
+                    emptyDirectory(`${localPath}/../..`)
+                        .then(function(){
+                            writeNewFiles(localPath)
+                                .then(function(){
+                                    uploadOntology(localPath, username, email);
+                                })
+                                .catch(function(){
+                                    console.log('Error al crear los directorios dentro de current');
+                                });
+                        })
+                        .catch(function(){
+                            console.log('Error al vaciar el directorio Current');
+                        });
+        
+                }
             });
-            fs.mkdirSync(`${localPath}/../../../Release/${newVersion}/Test`, (err) => {
-                if (err) {
-                    console.log(err);
-                };
-            });
-
+            /*
+            copyCurrentVersion(`${localPath}/../..`,`${localPath}/../../../Release/${oldVersion}`)
+                .then(function(){
+                    emptyDirectory(`${localPath}/../..`);
+                })
+                .catch(function(){
+                    console.log('error en la copia');
+                });
+/*
             writeNewFiles(localPath, newVersion)
                 .then(function () {
                     copyCurrentVersion(`${localPath}/../../../Release/${newVersion}`, `${localPath}/../..`)
@@ -177,6 +202,7 @@ function updateRepo(localPath, username, email) {
                     console.log('error al escribir los archivos en release');
                 });
             //.then(uploadOntology(`${localPath}/../../../`, username, email));
+            */
         }
         else {
             console.log(`The directory ${localPath} does not exists. The repository can not be stored in that path`);
@@ -202,21 +228,81 @@ function writeOntology(ontologyPath) {
     }));
 }
 
-function writeNewFiles(localPath, newVersion) {
+function writeNewFiles(localPath) {
     return new Promise((resolve, reject) => {
-        //Create README.md in each folder
-        var text = '#Diagrams\n'
-        writeREADME(`${localPath}/../../../Release/${newVersion}/Diagrams/README.md`, text);
-        text = '#Test\n'
-        writeREADME(`${localPath}/../../../Release/${newVersion}/Test/README.md`, text);
+        //Create folders in Current
+        fs.mkdirSync(`${localPath}/../../../Current/Ontology`, { recursive: true }, (err) => {
+            if (err) {
+                console.log(err);
+            };
+        });
+        fs.mkdirSync(`${localPath}/../../../Current/Diagrams`, (err) => {
+            if (err) {
+                console.log(err);
+            };
+        });
+        fs.mkdirSync(`${localPath}/../../../Current/Test`, (err) => {
+            if (err) {
+                console.log(err);
+            };
+        });
+        fs.mkdirSync(`${localPath}/../../../Current/Documentation`, (err) => {
+            if (err) {
+                console.log(err);
+            };
+        });
+        fs.mkdirSync(`${localPath}/../../../Current/Requirements`, (err) => {
+            if (err) {
+                console.log(err);
+            };
+        });
+        fs.mkdirSync(`${localPath}/../../../Current/Requirements/ORSD`, (err) => {
+            if (err) {
+                console.log(err);
+            };
+        });
+        fs.mkdirSync(`${localPath}/../../../Current/Requirements/finalVersion`, (err) => {
+            if (err) {
+                console.log(err);
+            };
+        });
+        fs.mkdirSync(`${localPath}/../../../Current/Requirements/testSuite`, (err) => {
+            if (err) {
+                console.log(err);
+            };
+        });
+
+        //Create README.md in each subfolder of Current
+        var text = '#Ontology\n Para guardar el ttl con la ontología'
+        console.log(`${localPath}/../../../Current/Ontology/README.md`);
+        writeREADME(`${localPath}/../../../Current/Ontology/README.md`, text);
+
+        text = '#Diagrams\n Para guardar imagenes con los diagramas'
+        writeREADME(`${localPath}/../../../Current/Diagrams/README.md`, text);
+
+        text = '#Test\n Para guardar las sparql queries de ejemplo'
+        writeREADME(`${localPath}/../../../Current/Test/README.md`, text);
+
+        text = '#Documentation\n Documentacion html'
+        writeREADME(`${localPath}/../../../Current/Documentation/README.md`, text);
+
+        text = '#Requirements\n Se almacenara todo lo que incluyan los requirements'
+        writeREADME(`${localPath}/../../../Current/Requirements/README.md`, text);
+
+        //Create README.md in each subfolder of Requirements
+        text = '#ORSD\n Se almacenara el ORSD'
+        writeREADME(`${localPath}/../../../Current/Requirements/ORSD/README.md`, text);
+
+        text = '#Requirements Final Version\n Se almacenara la version final de los requirements'
+        writeREADME(`${localPath}/../../../Current/Requirements/finalVersion/README.md`, text);
+
+        text = '#Test Suite\n Se almacenara los test suites'
+        writeREADME(`${localPath}/../../../Current/Requirements/testSuite/README.md`, text);
 
         //Write ontology in the folder release
-        writeOntology(`${localPath}/../../../Release/${newVersion}/Ontology/ontology.ttl`);
+        writeOntology(`${localPath}/../../../Current/Ontology/ontology.ttl`);
 
-        emptyDirectory(`${localPath}/../..`);
-        setTimeout(() => {
-            resolve();
-        }, 2000);
+        resolve();
 
     });
 }
@@ -242,20 +328,9 @@ function emptyDirectory(directory) {
                 };
             });
         });
-    });
-
-}
-
-async function copyCurrentVersion(src, dest) {
-    fs.copy(src, dest, (err) => {
-        if (err) {
-            console.log("Error Found:", err);
-
-        }
-        else {
-            console.log('File copied succesfully');
-
-        }
+        setTimeout(() => {
+            resolve();
+        }, 1000);
     });
 
 }
@@ -291,7 +366,7 @@ function uploadOntology(localPath, username, email) {
     }
 
     //Upload repository to github
-    exec(`cd ${localPath} && git add . && git commit -m "commit" && git push`, (error, stdout, stderr) => {
+    exec(`cd ${localPath}/../../../ && git add . && git commit -m "commit" && git push`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return;

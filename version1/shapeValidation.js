@@ -54,4 +54,4 @@ function writeValidationReport(file,reportPath,result) {
   });
 }
 
-main('../../../../pruebaCrearRepo2/Current/Ontology/ontology.ttl');
+main('../../../../pruebaOrdenadorTorre/Current/Ontology/ontology.ttl');
