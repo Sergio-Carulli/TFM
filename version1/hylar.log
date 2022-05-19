@@ -1,0 +1,338 @@
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 21:57:18 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 21:57:27 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 22:08:53 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 22:10:35 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 22:11:19 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 22:11:50 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 22:12:45 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 22:13:02 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 22:13:11 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 22:13:30 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:13:30 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 22:13:30 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 22:13:31 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 22:13:48 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 22:14:16 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 22:20:10 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
+[ Thu May 19 2022 22:26:07 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:26:07 GMT+0200 (Central European Summer Time) ] Error: Expected object to follow "http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Vegetarian" at line 48.
+    at N3Parser._error (D:\master\TFM\codigo\TFM\version1\node_modules\rdfstore\node_modules\n3\lib\N3Parser.js:573:20)
+    at N3Parser._readObject (D:\master\TFM\codigo\TFM\version1\node_modules\rdfstore\node_modules\n3\lib\N3Parser.js:215:19)
+    at D:\master\TFM\codigo\TFM\version1\node_modules\rdfstore\node_modules\n3\lib\N3Parser.js:683:35
+    at N3Lexer._tokenizeToEnd (D:\master\TFM\codigo\TFM\version1\node_modules\rdfstore\node_modules\n3\lib\N3Lexer.js:262:7)
+    at Immediate._onImmediate (D:\master\TFM\codigo\TFM\version1\node_modules\rdfstore\node_modules\n3\lib\N3Lexer.js:318:38)
+    at processImmediate (node:internal/timers:466:21)
+[ Thu May 19 2022 22:27:05 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:27:05 GMT+0200 (Central European Summer Time) ] 33 triples loaded in the store.
+[ Thu May 19 2022 22:27:05 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:27:05 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:27:05 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:27:05 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:28:58 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:28:58 GMT+0200 (Central European Summer Time) ] Error: Expected object to follow "http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Vegetarian" at line 48.
+    at N3Parser._error (D:\master\TFM\codigo\TFM\version1\node_modules\rdfstore\node_modules\n3\lib\N3Parser.js:573:20)
+    at N3Parser._readObject (D:\master\TFM\codigo\TFM\version1\node_modules\rdfstore\node_modules\n3\lib\N3Parser.js:215:19)
+    at D:\master\TFM\codigo\TFM\version1\node_modules\rdfstore\node_modules\n3\lib\N3Parser.js:683:35
+    at N3Lexer._tokenizeToEnd (D:\master\TFM\codigo\TFM\version1\node_modules\rdfstore\node_modules\n3\lib\N3Lexer.js:262:7)
+    at Immediate._onImmediate (D:\master\TFM\codigo\TFM\version1\node_modules\rdfstore\node_modules\n3\lib\N3Lexer.js:318:38)
+    at processImmediate (node:internal/timers:466:21)
+[ Thu May 19 2022 22:29:35 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:29:35 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 22:29:35 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:29:35 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:29:35 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:29:35 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:30:37 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:30:37 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 22:30:37 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:30:37 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:30:37 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:30:37 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:31:00 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:31:00 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 22:31:00 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:31:00 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:31:00 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:31:00 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:31:25 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:31:25 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 22:31:25 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:31:25 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:31:25 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:31:25 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 22:31:54 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 22:31:54 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 22:31:54 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 22:31:54 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 22:31:54 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 22:31:54 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 23:08:47 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 23:08:47 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 23:08:47 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 23:08:47 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 23:08:47 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 23:08:47 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 23:09:35 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 23:09:35 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 23:09:35 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 23:09:35 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 23:09:35 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 23:09:35 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 23:10:07 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 23:10:07 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 23:10:07 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 23:10:07 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 23:10:07 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 23:10:07 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 23:11:18 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 23:11:18 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 23:11:18 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 23:11:18 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 23:11:18 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 23:11:18 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 23:13:00 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 23:13:00 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 23:13:00 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 23:13:00 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 23:13:00 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 23:13:00 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 23:13:22 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 23:13:22 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 23:13:22 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 23:13:22 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 23:13:22 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 23:13:22 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 23:14:06 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 23:14:06 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 23:14:06 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 23:14:06 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 23:14:06 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 23:14:06 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 23:17:24 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 23:17:24 GMT+0200 (Central European Summer Time) ] 36 triples loaded in the store.
+[ Thu May 19 2022 23:17:24 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 23:17:24 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 23:17:24 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 23:17:24 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Reasoner set as incremental.
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] 38 triples loaded in the store.
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Classification started.
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Registering derivations to dictionary...
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Registered successfully.
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Classification succeeded.
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#IrreflexiveProperty> . ?x ?p ?x .}
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?y WHERE { ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AsymmetricProperty> . ?x ?p ?y . ?y ?p ?x .}
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Received SELECT ?p1 ?p2 ?x ?y  WHERE { ?p1 <http://www.w3.org/2002/07/owl#propertyDisjointWith> ?p2 . ?x ?p1 ?y . ?x ?p2 ?y . }
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i1 ?p ?i2 WHERE {?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i1 . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetIndividual> ?i2 . ?i1 ?p ?i2 .}
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?i ?p ?lt WHERE { ?x <http://www.w3.org/2002/07/owl#sourceIndividual> ?i . ?x <http://www.w3.org/2002/07/owl#assertionProperty> ?p . ?x <http://www.w3.org/2002/07/owl#targetValue> ?lt . ?i ?p ?lt .}
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Received SELECT ?x  WHERE { ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Nothing> . }
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Received SELECT ?c1 ?c2 ?x WHERE {?c1 <http://www.w3.org/2002/07/owl#complementOf> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 .}
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?p ?u ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y .}
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y ?c WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?x <http://www.w3.org/2002/07/owl#onClass> ?c . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c . ?u ?p ?y}
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?u ?p ?y  WHERE { ?x <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> . ?x <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/2002/07/owl#Thing> . ?x <http://www.w3.org/2002/07/owl#onProperty> ?p . ?u <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?x . ?u ?p ?y}
+[ Thu May 19 2022 23:18:12 GMT+0200 (Central European Summer Time) ] Received SELECT ?x ?c1 ?c2 WHERE { ?c1 <http://www.w3.org/2002/07/owl#disjointWith> ?c2 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c1 . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?c2 . }
