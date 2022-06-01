@@ -5,10 +5,10 @@ import N3 from 'n3';
 const h = new Hylar();
 
 //var ontologyPath = '../../../../pruebaInconsistencias/ontologySinInconsistencias.ttl';
-var ontologyPath = '../../../../pruebaInconsistencias/ontologyConInconsistencias.ttl';
-dependencyManagement(ontologyPath);
+//var ontologyPath = '../../../../pruebaInconsistencias/ontologyConInconsistencias.ttl';
+//dependencyManagement(ontologyPath);
 
-async function dependencyManagement(ontologyPath) {
+export default async function dependencyManagement(ontologyPath) {
   var rawOntology = await fs.readFileSync(ontologyPath, 'utf8');
   var mimeType = 'text/turtle';
 

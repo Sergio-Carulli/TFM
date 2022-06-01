@@ -16,7 +16,7 @@ async function loadDataset(filePath) {
   return factory.dataset().import(parser.import(stream))
 }
 
-async function main(ontologyPath) {
+export default async function shapeValidation(ontologyPath) {
   const data = await loadDataset(ontologyPath)
   const files = fs.readdirSync('./shapes')
   for (const file of files) {
@@ -54,4 +54,4 @@ function writeValidationReport(file,reportPath,result) {
   });
 }
 
-main('../../../../pruebaOrdenadorTorre/Current/Ontology/ontology.ttl');
+//shapeValidation('../../../../pruebaOrdenadorTorre/Current/Ontology/ontology.ttl');
