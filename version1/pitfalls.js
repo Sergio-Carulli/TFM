@@ -10,11 +10,26 @@ var store = new N3.Store();
 var prefix;
 var fileContents;
 
+
+if(process.argv.length != 3){
+    console.log("The number of arguments is incorrect");
+    process.exit(-1);
+}
+
+var ontologyPath = process.argv[2];
+if(!fs.existsSync(ontologyPath)){
+    console.log(`The file ${templatePath} does not exist`);
+    process.exit(-1);
+  }
+else{
+    pitfalls(ontologyPath);
+}
+
 /*
 var ontologyPath = '../../../../pruebaPitfalls/P06.ttl';
 pitfalls(ontologyPath);
 */
-export default async function pitfalls(ontologyPath) {
+async function pitfalls(ontologyPath) {
     await readOntology(ontologyPath);
     P02();
     P04();

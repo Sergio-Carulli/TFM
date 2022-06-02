@@ -4,11 +4,16 @@ import N3 from 'n3';
 
 const h = new Hylar();
 
-//var ontologyPath = '../../../../pruebaInconsistencias/ontologySinInconsistencias.ttl';
+//var ontologyPath = '../../../pruebaInconsistencias/ontologySinInconsistencias.ttl';
 //var ontologyPath = '../../../../pruebaInconsistencias/ontologyConInconsistencias.ttl';
-//dependencyManagement(ontologyPath);
+//dependencyManagement(process.argv[3]);
 
 export default async function dependencyManagement(ontologyPath) {
+  if(!fs.existsSync(ontologyPath)){
+    console.log(`The file ${ontologyPath} does not exist`);
+    process.exit(0);
+  }
+  console.log(ontologyPath);
   var rawOntology = await fs.readFileSync(ontologyPath, 'utf8');
   var mimeType = 'text/turtle';
 
