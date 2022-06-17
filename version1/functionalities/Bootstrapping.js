@@ -32,6 +32,7 @@ var prefixes = {
 }
 
 var variables = {}
+var log = [];
 
 //createOntology('./templates/data.yaml');
 
@@ -39,6 +40,12 @@ export default function createOntology(templatePath) {
     var fileContents = fs.readFileSync(templatePath, 'utf8');
     var data = yaml.loadAll(fileContents);
 
+    if(data.length != 6){
+        console.log(`Template ${templatePath} has not all the camps`);
+        console.log(`The camps are the following: Ontology metadata, prefix, class, object properties, data properties and repository information`);
+        console.log('Execution terminated');
+        process.exit(-1);
+    }
     //Read prefixes
     var prefix = data[1];
     createPrefix(prefix);
@@ -108,7 +115,7 @@ function createMetadata(metadata) {
 
     //license
     if (metadata["license"] == undefined || metadata["license"] == null) {
-        console.log("The camp 'License' is undefined. License is not going to be added in the ontology metadata");
+        log.push("The camp 'License' is undefined. License is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(
@@ -120,7 +127,7 @@ function createMetadata(metadata) {
 
     //creator
     if (metadata["creator"] == undefined || metadata["creator"] == null) {
-        console.log("The camp 'creator' is undefined. Creator is not going to be added in the ontology metadata");
+        log.push("The camp 'creator' is undefined. Creator is not going to be added in the ontology metadata");
     }
     else {
         metadata["creator"].split(',').forEach(element => {
@@ -134,7 +141,8 @@ function createMetadata(metadata) {
 
     //contributor
     if (metadata["contributor"] == undefined || metadata["contributor"] == null) {
-        console.log("The camp 'contributor' is undefined. Contributor is not going to be added in the ontology metadata");
+        log.push("The camp 'contributor' is undefined. Contributor is not going to be added in the ontology metadata");
+
     }
     else {
         metadata["contributor"].split(',').forEach(element => {
@@ -148,7 +156,7 @@ function createMetadata(metadata) {
 
     //prefix
     if (metadata["prefix"] == undefined || metadata["prefix"] == null) {
-        console.log("The camp 'prefix' is undefined. Prefix is not going to be added in the ontology metadata");
+        log.push("The camp 'prefix' is undefined. Prefix is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -160,7 +168,7 @@ function createMetadata(metadata) {
 
     //title
     if (metadata["title"] == undefined || metadata["title"] == null) {
-        console.log("The camp 'title' is undefined. Title is not going to be added in the ontology metadata");
+        log.push("The camp 'title' is undefined. Title is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -172,7 +180,7 @@ function createMetadata(metadata) {
 
     //description
     if (metadata["description"] == undefined || metadata["description"] == null) {
-        console.log("The camp 'description' is undefined. Description is not going to be added in the ontology metadata");
+        log.push("The camp 'description' is undefined. Description is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -184,7 +192,7 @@ function createMetadata(metadata) {
 
     //citation
     if (metadata["citation"] == undefined || metadata["citation"] == null) {
-        console.log("The camp 'citation' is undefined. Citation is not going to be added in the ontology metadata");
+        log.push("The camp 'citation' is undefined. Citation is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -196,7 +204,7 @@ function createMetadata(metadata) {
 
     //abstract
     if (metadata["abstract"] == undefined || metadata["abstract"] == null) {
-        console.log("The camp 'abstract' is undefined. Abstract is not going to be added in the ontology metadata");
+        log.push("The camp 'abstract' is undefined. Abstract is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -208,7 +216,7 @@ function createMetadata(metadata) {
 
     //see also
     if (metadata["see also"] == undefined || metadata["see also"] == null) {
-        console.log("The camp 'see also' is undefined. See also is not going to be added in the ontology metadata");
+        log.push("The camp 'see also' is undefined. See also is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -220,7 +228,7 @@ function createMetadata(metadata) {
 
     //status
     if (metadata["status"] == undefined || metadata["status"] == null) {
-        console.log("The camp 'status' is undefined. Status is not going to be added in the ontology metadata");
+        log.push("The camp 'status' is undefined. Status is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -232,7 +240,7 @@ function createMetadata(metadata) {
 
     //backward compatibility
     if (metadata["backward compatibility"] == undefined || metadata["backward compatibility"] == null) {
-        console.log("The camp 'backward compatibility' is undefined. Backward compatibility is not going to be added in the ontology metadata");
+        log.push("The camp 'backward compatibility' is undefined. Backward compatibility is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -244,7 +252,7 @@ function createMetadata(metadata) {
 
     //incompatibility
     if (metadata["incompatibility"] == undefined || metadata["incompatibility"] == null) {
-        console.log("The camp 'incompatibility' is undefined. Incompatibility is not going to be added in the ontology metadata");
+        log.push("The camp 'incompatibility' is undefined. Incompatibility is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -256,7 +264,7 @@ function createMetadata(metadata) {
 
     //issued date
     if (metadata["issued date"] == undefined || metadata["issued date"] == null) {
-        console.log("The camp 'issued date' is undefined. Issued date is not going to be added in the ontology metadata");
+        log.push("The camp 'issued date' is undefined. Issued date is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -268,7 +276,7 @@ function createMetadata(metadata) {
 
     //source
     if (metadata["source"] == undefined || metadata["source"] == null) {
-        console.log("The camp 'source' is undefined. Source is not going to be added in the ontology metadata");
+        log.push("The camp 'source' is undefined. Source is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -280,7 +288,7 @@ function createMetadata(metadata) {
 
     //publisher
     if (metadata["publisher"] == undefined || metadata["publisher"] == null) {
-        console.log("The camp 'publisher' is undefined. Publisher is not going to be added in the ontology metadata");
+        log.push("The camp 'publisher' is undefined. Publisher is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -292,7 +300,7 @@ function createMetadata(metadata) {
 
     //DOI
     if (metadata["DOI"] == undefined || metadata["DOI"] == null) {
-        console.log("The camp 'DOI' is undefined. DOI is not going to be added in the ontology metadata");
+        log.push("The camp 'DOI' is undefined. DOI is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -304,7 +312,7 @@ function createMetadata(metadata) {
 
     //logo
     if (metadata["logo"] == undefined || metadata["logo"] == null) {
-        console.log("The camp 'logo' is undefined. Logo is not going to be added in the ontology metadata");
+        log.push("The camp 'logo' is undefined. Logo is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -316,7 +324,7 @@ function createMetadata(metadata) {
 
     //diagram
     if (metadata["diagram"] == undefined || metadata["diagram"] == null) {
-        console.log("The camp 'diagram' is undefined. Diagram is not going to be added in the ontology metadata");
+        log.push("The camp 'diagram' is undefined. Diagram is not going to be added in the ontology metadata");
     }
     else {
         writer.addQuad(quad(
@@ -373,7 +381,7 @@ function createClasses(classes) {
                 className = `${prefix}${name.substring(pos + 1)}`;
             }
             else {//The prefix is undefined
-                console.log(`Prefix ${name.substring(0, pos)} for the class ${name} is not defined`);
+                console.log(`Prefix ${name.substring(0, pos)} use in the class ${name} is not defined`);
                 console.log('Execution terminated');
                 process.exit(-1);
             }
@@ -393,7 +401,7 @@ function createClasses(classes) {
         if (class_metadata != null) {
             //class label
             if (class_metadata["label"] == undefined || class_metadata["label"] == null) {
-                console.log(`The class ${name} has not "label" defined. Label is not going to be added in the class ${name} metadata`);
+                log.push(`The class ${name} has not "label" defined. Label is not going to be added in the class ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -405,7 +413,7 @@ function createClasses(classes) {
 
             //class comment
             if (class_metadata["definition"] == undefined || class_metadata["definition"] == null) {
-                console.log(`The class ${name} has not "definition" defined. Comment is not going to be added in the class ${name} metadata`);
+                log.push(`The class ${name} has not "definition" defined. Comment is not going to be added in the class ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -417,7 +425,7 @@ function createClasses(classes) {
 
             //class example
             if (class_metadata["example"] == undefined || class_metadata["example"] == null) {
-                console.log(`The class ${name} has not "example" defined. Example is not going to be added in the class ${name} metadata`);
+                log.push(`The class ${name} has not "example" defined. Example is not going to be added in the class ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -429,7 +437,7 @@ function createClasses(classes) {
 
             //class status
             if (class_metadata["status"] == undefined || class_metadata["status"] == null) {
-                console.log(`The class ${name} has not "status" defined. Status is not going to be added in the class ${name} metadata`);
+                log.push(`The class ${name} has not "status" defined. Status is not going to be added in the class ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -441,7 +449,7 @@ function createClasses(classes) {
 
             //class rationale
             if (class_metadata["rationale"] == undefined || class_metadata["rationale"] == null) {
-                console.log(`The class ${name} has not "ratioanle" defined. Rationale is not going to be added in the class ${name} metadata`);
+                log.push(`The class ${name} has not "ratioanle" defined. Rationale is not going to be added in the class ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -453,7 +461,7 @@ function createClasses(classes) {
 
             //class source
             if (class_metadata["source"] == undefined || class_metadata["source"] == null) {
-                console.log(`The class ${name} has not "source" defined. Source is not going to be added in the class ${name} metadata`);
+                log.push(`The class ${name} has not "source" defined. Source is not going to be added in the class ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -464,7 +472,7 @@ function createClasses(classes) {
             }
         }
         else {
-            console.log(`The class ${name} has not metadata defined. Any metadata is not going to be added in the class ${name}`);
+            log.push(`The class ${name} has not metadata defined. No metadata is not going to be added in the class ${name}`);
         }
     });
 
@@ -484,7 +492,7 @@ function createObjectProperties(objectProperties) {
                 className = `${prefix}${name.substring(pos + 1)}`;
             }
             else {//The prefix is undefined
-                console.log(`Prefix ${name.substring(0, pos)} for the object property ${name}is not defined.`);
+                console.log(`Prefix ${name.substring(0, pos)} use in the object property ${name} is not defined.`);
                 console.log('Execution terminated');
                 process.exit(-1);
             }
@@ -504,7 +512,7 @@ function createObjectProperties(objectProperties) {
         if (class_metadata != null) {
             //object property domain
             if (class_metadata["domain"] == undefined || class_metadata["domain"] == null) {
-                console.log(`The object property ${name} has not "domain" defined. Domain is not going to be added in the object property ${name} metadata`);
+                log.push(`The object property ${name} has not "domain" defined. Domain is not going to be added in the object property ${name} metadata`);
             }
             else {
                 domainRange = class_metadata["domain"];
@@ -515,7 +523,8 @@ function createObjectProperties(objectProperties) {
                         domainRange = `${prefix}${domainRange.substring(pos + 1)}`;
                     }
                     else {//The prefix is undefined
-                        console.log(`Prefix ${domainRange.substring(0, pos)} for the class ${domainRange} in the domain of the object property ${name} is not defined`);
+                        console.log(`Prefix ${domainRange.substring(0, pos)} use in the class ${domainRange} which is used as domain of the object property ${name} is not defined`);
+                        console.log('Execution terminated');
                         process.exit(-1);
                     }
                 }
@@ -525,7 +534,8 @@ function createObjectProperties(objectProperties) {
                 }
                 //If the class has not been defined previously terminate execution
                 if (variables[class_metadata["domain"]] != '') {
-                    console.log(`The class ${class_metadata["domain"]} is not defined in the domain of the object property ${name}`);
+                    console.log(`The class ${class_metadata["domain"]} use as domain of the object property ${name} is not defined `);
+                    console.log('Execution terminated');
                     process.exit(-1);
                 }
                 //Add domain
@@ -538,7 +548,7 @@ function createObjectProperties(objectProperties) {
 
             //object property range
             if (class_metadata["range"] == undefined || class_metadata["range"] == null) {
-                console.log(`The object property ${name} has not "range" defined. Range is not going to be added in the object property ${name} metadata`);
+                log.push(`The object property ${name} has not "range" defined. Range is not going to be added in the object property ${name} metadata`);
             }
             else {
                 domainRange = class_metadata["range"];
@@ -549,7 +559,8 @@ function createObjectProperties(objectProperties) {
                         domainRange = `${prefix}${domainRange.substring(pos + 1)}`;
                     }
                     else {//The prefix is undefined
-                        console.log(`Prefix ${domainRange.substring(0, pos)} for the class ${domainRange} in the range of the object property ${name} is not defined`);
+                        console.log(`Prefix ${domainRange.substring(0, pos)} use in the class ${domainRange} which is used as range of the object property ${name} is not defined`);
+                        console.log('Execution terminated');
                         process.exit(-1);
                     }
                 }
@@ -559,7 +570,8 @@ function createObjectProperties(objectProperties) {
                 }
                 //If the class has not been defined previously terminate execution
                 if (variables[class_metadata["range"]] != '') {
-                    console.log(`Class ${class_metadata["range"]} is not defined in the range of the object property ${name}`);
+                    console.log(`Class ${class_metadata["range"]} use as range of the object property ${name} is not defined `);
+                    console.log('Execution terminated');
                     process.exit(-1);
                 }
                 //Add range
@@ -572,7 +584,7 @@ function createObjectProperties(objectProperties) {
 
             //class label
             if (class_metadata["label"] == undefined || class_metadata["label"] == null) {
-                console.log(`The object property ${name} has not "label" defined. Label is not going to be added in the object property ${name} metadata`);
+                log.push(`The object property ${name} has not "label" defined. Label is not going to be added in the object property ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -584,7 +596,7 @@ function createObjectProperties(objectProperties) {
 
             //class comment
             if (class_metadata["definition"] == undefined || class_metadata["definition"] == null) {
-                console.log(`The object property ${name} has not "definition" defined. Comment is not going to be added in the object property ${name} metadata`);
+                log.push(`The object property ${name} has not "definition" defined. Comment is not going to be added in the object property ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -596,7 +608,7 @@ function createObjectProperties(objectProperties) {
 
             //class example
             if (class_metadata["example"] == undefined || class_metadata["example"] == null) {
-                console.log(`The object property ${name} has not "example" defined. Example is not going to be added in the object property ${name} metadata`);
+                log.push(`The object property ${name} has not "example" defined. Example is not going to be added in the object property ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -608,7 +620,7 @@ function createObjectProperties(objectProperties) {
 
             //class status
             if (class_metadata["status"] == undefined || class_metadata["status"] == null) {
-                console.log(`The object property ${name} has not "status" defined. Status is not going to be added in the object property ${name} metadata`);
+                log.push(`The object property ${name} has not "status" defined. Status is not going to be added in the object property ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -620,7 +632,7 @@ function createObjectProperties(objectProperties) {
 
             //class rationale
             if (class_metadata["rationale"] == undefined || class_metadata["rationale"] == null) {
-                console.log(`The object property ${name} has not "rationale" defined. Rationale is not going to be added in the object property ${name} metadata`);
+                log.push(`The object property ${name} has not "rationale" defined. Rationale is not going to be added in the object property ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -632,7 +644,7 @@ function createObjectProperties(objectProperties) {
 
             //class source
             if (class_metadata["source"] == undefined || class_metadata["source"] == null) {
-                console.log(`The object property ${name} has not "source" defined. Source is not going to be added in the object property ${name} metadata`);
+                log.push(`The object property ${name} has not "source" defined. Source is not going to be added in the object property ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -644,7 +656,7 @@ function createObjectProperties(objectProperties) {
 
         }
         else {
-            console.log(`The object property ${name} has not metadata defined. Any metadata is not going to be added in the object property ${name}`);
+            log.push(`The object property ${name} has not metadata defined. Any metadata is not going to be added in the object property ${name}`);
         }
     });
 }
@@ -663,7 +675,8 @@ function createDataProperties(dataProperties) {
                 className = `${prefix}${name.substring(pos + 1)}`;
             }
             else {//The prefix is undefined
-                console.log(`Prefix ${name.substring(0, pos)} for the data property ${name} is not defined`);
+                console.log(`Prefix ${name.substring(0, pos)} use in the data property ${name} is not defined`);
+                console.log('Execution terminated');
                 process.exit(-1);
             }
         }
@@ -682,7 +695,7 @@ function createDataProperties(dataProperties) {
         if (class_metadata != null) {
             //object property domain
             if (class_metadata["domain"] == undefined || class_metadata["domain"] == null) {
-                console.log(`The data property ${name} has not "domain" defined. Domain is not going to be added in the data property ${name} metadata`);
+                log.push(`The data property ${name} has not "domain" defined. Domain is not going to be added in the data property ${name} metadata`);
             }
             else {
                 domainRange = class_metadata["domain"];
@@ -693,7 +706,8 @@ function createDataProperties(dataProperties) {
                         domainRange = `${prefix}${domainRange.substring(pos + 1)}`;
                     }
                     else {//The prefix is undefined
-                        console.log(`Prefix ${domainRange.substring(0, pos)} for the class ${domainRange} in the domain of the data property ${name} is not defined`);
+                        console.log(`Prefix ${domainRange.substring(0, pos)} use in the class ${domainRange} use as domain of the data property ${name} is not defined`);
+                        console.log('Execution terminated');
                         process.exit(-1);
                     }
                 }
@@ -703,7 +717,8 @@ function createDataProperties(dataProperties) {
                 }
                 //If the class has not been defined previously terminate execution
                 if (variables[class_metadata["domain"]] != '') {
-                    console.log(`Class ${class_metadata["domain"]} is not defined in the domain of the data property ${name}`);
+                    console.log(`Class ${class_metadata["domain"]} use as domain of the data property ${name} is not defined`);
+                    console.log('Execution terminated');
                     process.exit(-1);
                 }
                 writer.addQuad(
@@ -715,7 +730,7 @@ function createDataProperties(dataProperties) {
 
             //object property range
             if (class_metadata["range"] == undefined || class_metadata["range"] == null) {
-                console.log(`The data property ${name} has not "range" defined. Range is not going to be added in the data property ${name} metadata`);
+                log.push(`The data property ${name} has not "range" defined. Range is not going to be added in the data property ${name} metadata`);
             }
             else {
                 writer.addQuad(
@@ -727,7 +742,7 @@ function createDataProperties(dataProperties) {
 
             //class label
             if (class_metadata["label"] == undefined || class_metadata["label"] == null) {
-                console.log(`The data property ${name} has not "label" defined. Label is not going to be added in the data property ${name} metadata`);
+                log.push(`The data property ${name} has not "label" defined. Label is not going to be added in the data property ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -739,7 +754,7 @@ function createDataProperties(dataProperties) {
 
             //class comment
             if (class_metadata["definition"] == undefined || class_metadata["definition"] == null) {
-                console.log(`The data property ${name} has not "definition" defined. Comment is not going to be added in the data property ${name} metadata`);
+                log.push(`The data property ${name} has not "definition" defined. Comment is not going to be added in the data property ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -751,7 +766,7 @@ function createDataProperties(dataProperties) {
 
             //class example
             if (class_metadata["example"] == undefined || class_metadata["example"] == null) {
-                console.log(`The data property ${name} has not "example" defined. Example is not going to be added in the data property ${name} metadata`);
+                log.push(`The data property ${name} has not "example" defined. Example is not going to be added in the data property ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -763,7 +778,7 @@ function createDataProperties(dataProperties) {
 
             //class status
             if (class_metadata["status"] == undefined || class_metadata["status"] == null) {
-                console.log(`The data property ${name} has not "status" defined. Status is not going to be added in the data property ${name} metadata`);
+                log.push(`The data property ${name} has not "status" defined. Status is not going to be added in the data property ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -775,7 +790,7 @@ function createDataProperties(dataProperties) {
 
             //class rationale
             if (class_metadata["rationale"] == undefined || class_metadata["rationale"] == null) {
-                console.log(`The data property ${name} has not "rationale" defined. Rationale is not going to be added in the data property ${name} metadata`);
+                log.push(`The data property ${name} has not "rationale" defined. Rationale is not going to be added in the data property ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -787,7 +802,7 @@ function createDataProperties(dataProperties) {
 
             //class source
             if (class_metadata["source"] == undefined || class_metadata["source"] == null) {
-                console.log(`The data property ${name} has not "source" defined. Source is not going to be added in the data property ${name} metadata`);
+                log.push(`The data property ${name} has not "source" defined. Source is not going to be added in the data property ${name} metadata`);
             }
             else {
                 writer.addQuad(quad(
@@ -799,7 +814,7 @@ function createDataProperties(dataProperties) {
 
         }
         else {
-            console.log(`The data property ${name} has not metadata defined. Any metadata is not going to be added in the data property ${name}`);
+            log.push(`The data property ${name} has not metadata defined. Any metadata is not going to be added in the data property ${name}`);
         }
     });
 }
@@ -810,6 +825,17 @@ function createRepo(repo) {
     if (localPath != undefined && localPath != null) {
         //Check if the path exists
         if (fs.existsSync(localPath)) {
+            //Check if directory localPath is empty
+            const files = fs.readdirSync(localPath);
+            if(files.length){
+                console.log(`Error: Directory ${localPath} is not empty`);
+                console.log('It contains the following files:')
+                for (const file of files) {
+                    console.log(`${file}`);
+                }
+                console.log('Execution terminated');
+                process.exit(-1);
+            }
             //Create the folder structure
             var text;
             //Create folders
@@ -914,13 +940,18 @@ function createRepo(repo) {
             writeREADME(`${localPath}/Data/useCases/README.md`, text);
 
             //Write the ontology in folder Current
-            writeOntology(`${localPath}/Current/Ontology/ontology.ttl`);
+            writeOntology(`${localPath}/Current/Ontology/ontology.ttl`).then(() => {
+                //Upload ontology to github
+                uploadOntology(localPath, repo['url'], repo['github username'], repo['github email']).then(() =>{
+                    writeLog('./logs/');
+                });
+            });
 
             //Copy the ontology to folder Current
             //copyCurrentVersion(`${localPath}/Release/1.0.0`, `${localPath}/Current`);
 
-            //Upload ontology to github
-            uploadOntology(localPath, repo['url'], repo['github username'], repo['github email']);
+            
+            
         }
         else {
             console.log(`The directory ${localPath} does not exists. The repository can not be created in that path`);
@@ -930,21 +961,31 @@ function createRepo(repo) {
     }
     else {
         console.log("The camp 'repository local path' is not defined. The repository is not going to be created");
+        log.push("The camp 'repository local path' is not defined. The repository is not going to be created");
         console.log("The ontology is going to be stored in the current path");
-        writeOntology('./ontology.ttl');
+        log.push("The ontology is going to be stored in the current path");
+        writeOntology('./ontology.ttl').then(() => {
+            writeLog('./logs/')
+        });
     }
 
 
 }
 
-function writeOntology(ontologyPath) {
-    writer.end((error, result) => fs.writeFile(ontologyPath, result, function (err) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('The ttl file has been created successfully');
-        }
-    }));
+async function writeOntology(ontologyPath) {
+    return new Promise((resolve, reject) => {
+        writer.end((error, result) => fs.writeFile(ontologyPath, result, function (err) {
+            if (err) {
+                console.log(err);
+            } else {
+                log.push('The ttl file has been created successfully');
+            }
+        }));
+        setTimeout(() => {
+            resolve();
+        }, 100);
+    });
+    
 }
 
 function writeREADME(readmePath, text) {
@@ -952,7 +993,7 @@ function writeREADME(readmePath, text) {
         if (err) {
             console.log(err);
         } else {
-            console.log(`The Readme file has been created successfully in ${readmePath}`);
+            log.push(`The Readme file has been created successfully in ${readmePath}`);
         }
     });
 }
@@ -968,9 +1009,11 @@ function copyCurrentVersion(src, dest) {
     });
 }
 
-function uploadOntology(localPath, url, username, email) {
+async function uploadOntology(localPath, url, username, email) {
+    return new Promise((resolve, reject) => {
     if (url == undefined || url == null) {
-        console.log("Url is not defined. It is not possible to upload the repositoy to github");
+        console.log("Url is not defined. It is not possible to upload the repository to github");
+        log.push("Url is not defined. It is not possible to upload the repository to github");
     }
     else {
         //Configure github username
@@ -984,7 +1027,7 @@ function uploadOntology(localPath, url, username, email) {
                     console.log(`stderr: ${stderr}`);
                     return;
                 }
-                console.log(`Username succesfully configured`);
+                log.push(`Username succesfully configured`);
             });
         }
         //Cofigure github email
@@ -998,7 +1041,7 @@ function uploadOntology(localPath, url, username, email) {
                     console.log(`stderr: ${stderr}`);
                     return;
                 }
-                console.log(`Email succesfully configured`);
+                log.push(`Email succesfully configured`);
             });
         }
 
@@ -1012,7 +1055,23 @@ function uploadOntology(localPath, url, username, email) {
                 console.log(`stderr: ${stderr}`);
                 return;
             }
-            console.log(`Ontology succesfully upload`);
+            log.push(`Ontology succesfully upload`);
         });
     }
+    setTimeout(() => {
+        resolve();
+    }, 100);
+});
+}
+
+function writeLog(logPath) {
+    let now= new Date();
+    logPath = `${logPath}bootstrapingLog_${now.getMonth()}-${now.getDate()}-${now.getFullYear()}_${now.getHours()}_${now.getMinutes()}_${now.getSeconds()}.txt`;
+    fs.writeFile(`${logPath}`, log.join('\n'), function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(`The Log file has been created successfully in ${logPath}`);
+        }
+    });
 }

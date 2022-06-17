@@ -1,0 +1,26 @@
+Pitfall P08: Pattern A Class http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Location
+Pitfall P08: Pattern B Class http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Location
+Pitfall P08: Pattern A Class http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Student
+Pitfall P08: Pattern B Class http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Student
+Pitfall P08: Pattern A Object Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#isLocated
+Pitfall P08: Pattern B Object Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#isLocated
+Pitfall P08: Pattern B Object Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#go
+Pitfall P08: Pattern A Data Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#hasName
+Pitfall P08: Pattern B Data Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#hasName
+Pitfall P08: Pattern B Data Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#hasCapacity
+Pitfall P10: Not disjoint axiom found
+Pitfall P11: Pattern B Object Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#go
+Pitfall P11: Pattern B Data Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#hasCapacity
+Pitfall P13: Pattern A http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#isLocated
+Pitfall P13: Pattern A http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#go
+Pitfall P20: Pattern B Class http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Location
+Pitfall P20: Pattern C Class http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Location
+Pitfall P20: Pattern B Class http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Student
+Pitfall P20: Pattern C Class http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Student
+Pitfall P20: Pattern B Data Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#hasName
+Pitfall P20: Pattern C Data Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#hasName
+Pitfall P20: Pattern C Data Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#hasCapacity
+Pitfall P20: Pattern B Object Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#isLocated
+Pitfall P20: Pattern C Object Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#isLocated
+Pitfall P20: Pattern C Object Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#go
+Pitfall P41

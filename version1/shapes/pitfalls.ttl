@@ -9,8 +9,8 @@
 @prefix sarefsh: <https://saref.etsi.org/shape#> .
 @prefix schema: <http://schema.org/> .
 
-sarefsh:range a sh:NodeShape ;
-  sh:targetClass owl:DatatypeProperty;
+sarefsh:range1 a sh:NodeShape ;
+  sh:targetClass owl:ObjectProperty;
   sh:severity sh:Violation ;
   sh:or (
     [ sh:nodeKind sh:BlankNode ]
@@ -18,6 +18,17 @@ sarefsh:range a sh:NodeShape ;
         sh:path rdfs:range ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI
+    ]]
+  ) .
+
+  sarefsh:range2 a sh:NodeShape ;
+  sh:targetClass owl:DatatypeProperty;
+  sh:severity sh:Violation ;
+  sh:or (
+    [ sh:nodeKind sh:BlankNode ]
+    [ sh:property [ 
+        sh:path rdfs:range ;
+        sh:minCount 1 
     ]]
   ) .
 

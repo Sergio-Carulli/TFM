@@ -1,5 +1,5 @@
---- # Ontology Metadata
-  ontology: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#
+--- # Metadata
+  ontology: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt
   license: http://purl.org/dc/terms/0.1.1
   creator: creator1, creator2, creator3
   contributor: contributor 1
@@ -32,7 +32,7 @@
 
 --- # Object properties and metadata
   aux:isLocated: 
-    domain: StudyRoom
+    domain: aux:StudyRoom
     range: aux:Location
   aux:go: 
     domain: aux:Student
@@ -48,8 +48,8 @@
     label: capacity
 
 --- # Repo
-  repository local path: ../../../../pruebaOrdenadorFinal
-  url: https://github.com/Sergio-Carulli/pruebaOrdenadorFinal.git
+  repository local path: ../../../../pruebaOrdenadorTorre4
+  url: https://github.com/Sergio-Carulli/pruebaOrdenadorTorre3.git
   github username: Sergio-Carulli
   github email: sergiomario.carulli.perez@alumnos.upm.es
 

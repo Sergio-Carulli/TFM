@@ -1,0 +1,60 @@
+The camp 'abstract' is undefined. Abstract is not going to be added in the ontology metadata
+The camp 'see also' is undefined. See also is not going to be added in the ontology metadata
+The camp 'status' is undefined. Status is not going to be added in the ontology metadata
+The camp 'backward compatibility' is undefined. Backward compatibility is not going to be added in the ontology metadata
+The camp 'incompatibility' is undefined. Incompatibility is not going to be added in the ontology metadata
+The camp 'issued date' is undefined. Issued date is not going to be added in the ontology metadata
+The camp 'source' is undefined. Source is not going to be added in the ontology metadata
+The camp 'publisher' is undefined. Publisher is not going to be added in the ontology metadata
+The camp 'DOI' is undefined. DOI is not going to be added in the ontology metadata
+The camp 'logo' is undefined. Logo is not going to be added in the ontology metadata
+The camp 'diagram' is undefined. Diagram is not going to be added in the ontology metadata
+The class StudyRoom has not "example" defined. Example is not going to be added in the class StudyRoom metadata
+The class StudyRoom has not "status" defined. Status is not going to be added in the class StudyRoom metadata
+The class StudyRoom has not "ratioanle" defined. Rationale is not going to be added in the class StudyRoom metadata
+The class StudyRoom has not "source" defined. Source is not going to be added in the class StudyRoom metadata
+The class aux:Location has not metadata defined. No metadata is not going to be added in the class aux:Location
+The class aux:Student has not "label" defined. Label is not going to be added in the class aux:Student metadata
+The class aux:Student has not "definition" defined. Comment is not going to be added in the class aux:Student metadata
+The class aux:Student has not "example" defined. Example is not going to be added in the class aux:Student metadata
+The class aux:Student has not "status" defined. Status is not going to be added in the class aux:Student metadata
+The class aux:Student has not "ratioanle" defined. Rationale is not going to be added in the class aux:Student metadata
+The class aux:Student has not "source" defined. Source is not going to be added in the class aux:Student metadata
+The object property aux:isLocated has not "label" defined. Label is not going to be added in the object property aux:isLocated metadata
+The object property aux:isLocated has not "definition" defined. Comment is not going to be added in the object property aux:isLocated metadata
+The object property aux:isLocated has not "example" defined. Example is not going to be added in the object property aux:isLocated metadata
+The object property aux:isLocated has not "status" defined. Status is not going to be added in the object property aux:isLocated metadata
+The object property aux:isLocated has not "rationale" defined. Rationale is not going to be added in the object property aux:isLocated metadata
+The object property aux:isLocated has not "source" defined. Source is not going to be added in the object property aux:isLocated metadata
+The object property aux:go has not "range" defined. Range is not going to be added in the object property aux:go metadata
+The object property aux:go has not "definition" defined. Comment is not going to be added in the object property aux:go metadata
+The object property aux:go has not "example" defined. Example is not going to be added in the object property aux:go metadata
+The object property aux:go has not "status" defined. Status is not going to be added in the object property aux:go metadata
+The object property aux:go has not "rationale" defined. Rationale is not going to be added in the object property aux:go metadata
+The object property aux:go has not "source" defined. Source is not going to be added in the object property aux:go metadata
+The data property aux:hasName has not "label" defined. Label is not going to be added in the data property aux:hasName metadata
+The data property aux:hasName has not "definition" defined. Comment is not going to be added in the data property aux:hasName metadata
+The data property aux:hasName has not "example" defined. Example is not going to be added in the data property aux:hasName metadata
+The data property aux:hasName has not "status" defined. Status is not going to be added in the data property aux:hasName metadata
+The data property aux:hasName has not "rationale" defined. Rationale is not going to be added in the data property aux:hasName metadata
+The data property aux:hasName has not "source" defined. Source is not going to be added in the data property aux:hasName metadata
+The data property aux:hasCapacity has not "range" defined. Range is not going to be added in the data property aux:hasCapacity metadata
+The data property aux:hasCapacity has not "definition" defined. Comment is not going to be added in the data property aux:hasCapacity metadata
+The data property aux:hasCapacity has not "example" defined. Example is not going to be added in the data property aux:hasCapacity metadata
+The data property aux:hasCapacity has not "status" defined. Status is not going to be added in the data property aux:hasCapacity metadata
+The data property aux:hasCapacity has not "rationale" defined. Rationale is not going to be added in the data property aux:hasCapacity metadata
+The data property aux:hasCapacity has not "source" defined. Source is not going to be added in the data property aux:hasCapacity metadata
+The Readme file has been created successfully in ../../../../pruebaOrdenadorTorre4/Current/README.md
+The Readme file has been created successfully in ../../../../pruebaOrdenadorTorre4/Release/README.md
+The Readme file has been created successfully in ../../../../pruebaOrdenadorTorre4/Data/README.md
+The Readme file has been created successfully in ../../../../pruebaOrdenadorTorre4/Current/Ontology/README.md
+The Readme file has been created successfully in ../../../../pruebaOrdenadorTorre4/Current/Diagrams/README.md
+The Readme file has been created successfully in ../../../../pruebaOrdenadorTorre4/Current/Test/README.md
+The Readme file has been created successfully in ../../../../pruebaOrdenadorTorre4/Current/Documentation/README.md
+The Readme file has been created successfully in ../../../../pruebaOrdenadorTorre4/Current/Requirements/README.md
+The Readme file has been created successfully in ../../../../pruebaOrdenadorTorre4/Current/Requirements/finalVersion/README.md
+The Readme file has been created successfully in ../../../../pruebaOrdenadorTorre4/Current/Requirements/ORSD/README.md
+The Readme file has been created successfully in ../../../../pruebaOrdenadorTorre4/Data/useCases/README.md
+The Readme file has been created successfully in ../../../../pruebaOrdenadorTorre4/Current/Requirements/testSuite/README.md
+The ttl file has been created successfully
+Url is not defined. It is not possible to upload the repository to github

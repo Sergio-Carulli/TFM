@@ -1,0 +1,10 @@
+Clause_9_4_3_1.ttl: true
+Clause_9_4_3_1.ttl validation report has been created succesfully
+Clause_9_4_3_2.ttl: false
+Clause_9_4_3_2.ttl validation report has been created succesfully
+Clause_9_4_3_3.ttl: true
+Clause_9_4_3_3.ttl validation report has been created succesfully
+Clause_9_4_4_2.ttl: false
+Clause_9_4_4_2.ttl validation report has been created succesfully
+pitfalls.ttl: false
+pitfalls.ttl validation report has been created succesfully

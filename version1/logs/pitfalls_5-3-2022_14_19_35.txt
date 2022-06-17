@@ -1,0 +1,3 @@
+Pitfall P10: Not disjoint axiom found
+Pitfall P13: Pattern A http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#isLocated
+Pitfall P13: Pattern A http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#go

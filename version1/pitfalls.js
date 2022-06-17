@@ -8,17 +8,21 @@ const { namedNode, literal, defaultGraph, quad } = DataFactory;
 var parser = new N3.Parser();
 var store = new N3.Store();
 var prefix;
+var log = [];
 var fileContents;
 
 
 if(process.argv.length != 3){
     console.log("The number of arguments is incorrect");
+    console.log("The number of arguments must be 3");
+    console.log('Execution terminated');
     process.exit(-1);
 }
 
 var ontologyPath = process.argv[2];
 if(!fs.existsSync(ontologyPath)){
-    console.log(`The file ${templatePath} does not exist`);
+    console.log(`The file ${ontologyPath} does not exist`);
+    console.log('Execution terminated');
     process.exit(-1);
   }
 else{
@@ -57,32 +61,13 @@ async function pitfalls(ontologyPath) {
     P36();
     P38();
     P41();
-    //console.log(prefix);
-
+    setTimeout(() => {
+        writeLog('./logs/');
+    }, 1000);
 }
-/*
-function P35(){
-    var objectProperties = store.getQuads(null, namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), namedNode('http://www.w3.org/2002/07/owl#ObjectProperty'));
-    if(objectProperties.length != 0){
-        var domain;
-        objectProperties.forEach(element => {
-            domain = store.getQuads(namedNode(element.subject.id), namedNode('http://www.w3.org/2000/01/rdf-schema#domain'), null);
-            console.log(domain);
-            if(domain.length == 0){
-                console.log(`Pitfall P35: ${element}`)
-            }
 
-        });
-    }
-
-    //console.log(objectProperties);
-
-}
-*/
 Array.prototype.equals = function (getArray) {
     if (this.length != getArray.length) return false;
-    //console.log(getArray.length);
-    //console.log(this.length);
     for (var i = 0; i < getArray.length; i++) {
         if (this[i] instanceof Array && getArray[i] instanceof Array) {
             if (!this[i].equals(getArray[i])) return false;
@@ -141,7 +126,6 @@ function getEquivalentProperties() {
             while (j < array[i + 1].length) {
                 if (array[i].includes(array[i + 1][j])) {
                     array[i] = array[i].concat(array[i + 1]);
-                    //console.log(array);
                     array.splice(i + 1, 1);
 
                     i--;
@@ -171,7 +155,6 @@ function getSubProperties() {
             while (j < array[i + 1].length) {
                 if (array[i].includes(array[i + 1][j])) {
                     array[i] = array[i].concat(array[i + 1]);
-                    //console.log(array);
                     array.splice(i + 1, 1);
 
                     i--;
@@ -205,7 +188,7 @@ function P02() {
             }
             pref2 = element.object.id.substring(0, aux);
             if (pref1 == pref2) {
-                console.log(`Pitfall P02: Classes ${element.subject.id} and ${element.object.id}`);
+                log.push(`Pitfall P02: Classes ${element.subject.id} and ${element.object.id}`);
             }
         });
     }
@@ -228,7 +211,7 @@ function P04() {
                             if (!domain.length) {
                                 range = store.getQuads(null, namedNode('http://www.w3.org/2000/01/rdf-schema#range'), namedNode(element.subject.id));
                                 if (!range.length) {
-                                    console.log(`Pitfall P04: Class ${element.subject.id}`);
+                                    log.push(`Pitfall P04: Class ${element.subject.id}`);
                                 }
                             }
                         }
@@ -254,7 +237,7 @@ function P05() {
                 p1.forEach(c1 => {
                     p2.forEach(c2 => {
                         if (c1 != c2) {
-                            console.log(`Pitfall P05: Pattern A ${element.subject.id} ${element.object.id}`);
+                            log.push(`Pitfall P05: Pattern A ${element.subject.id} ${element.object.id}`);
                         }
                     })
                 })
@@ -267,7 +250,7 @@ function P05() {
                 p1.forEach(c1 => {
                     p2.forEach(c2 => {
                         if (c1 != c2) {
-                            console.log(`Pitfall P05: Pattern B ${element.subject.id} ${element.object.id}`);
+                            log.push(`Pitfall P05: Pattern B ${element.subject.id} ${element.object.id}`);
                         }
                     });
                 });
@@ -282,7 +265,7 @@ function detectCycles(c, subclasses) {
     if (subclass.length) {
         subclass.forEach(element => {
             if (subclasses.includes(element.object.id)) {
-                console.log(`Pitfall P06: Class ${element.object.id} is in a loop`);
+                log.push(`Pitfall P06: Class ${element.object.id} is in a loop`);
                 return;
             }
             else {
@@ -301,7 +284,6 @@ function detectCycles(c, subclasses) {
 function P06() {
     var classes = store.getQuads(null, namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), namedNode('http://www.w3.org/2002/07/owl#Class'));
     if (classes.length) {
-        //console.log(classes);
         classes.forEach(element => {
             detectCycles(element.subject.id, [element.subject.id]);
         });
@@ -309,29 +291,16 @@ function P06() {
 
 }
 
-/*
-function P06(){
-    var subclass = store.getQuads(null, namedNode('http://www.w3.org/2000/01/rdf-schema#subClassOf'), null);
-    if(subclass.length){
-        var array = [];
-        subclass.forEach(element => {
-            array.push([element.subject.id, element.object.id]);
-        });
-        console.log(array);
-    }
-
-}
-*/
 
 function P07() {
     var classes = store.getQuads(null, namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), namedNode('http://www.w3.org/2002/07/owl#Class'));
     if (classes.length) {
         classes.forEach(element => {
             if (element.subject.id.includes('and') || element.subject.id.includes('And')) {
-                console.log(`Pitfall P07: Pattern A Class ${element.subject.id}`);
+                log.push(`Pitfall P07: Pattern A Class ${element.subject.id}`);
             }
             else if (element.subject.id.includes('or') || element.subject.id.includes('Or')) {
-                console.log(`Pitfall P07: Pattern B Class ${element.subject.id}`);
+                log.push(`Pitfall P07: Pattern B Class ${element.subject.id}`);
             }
         })
     }
@@ -344,13 +313,13 @@ function P08_aux(ontologyElements, name) {
             //check label
             annotation = store.getQuads(element.subject.id, namedNode('http://www.w3.org/2000/01/rdf-schema#label'), null);
             if (!annotation.length) {
-                console.log(`Pitfall P08: Pattern A ${name} ${element.subject.id}`);
+                log.push(`Pitfall P08: Pattern A ${name} ${element.subject.id}`);
             }
 
             //check comment
             annotation = store.getQuads(element.subject.id, namedNode('http://www.w3.org/2000/01/rdf-schema#comment'), null);
             if (!annotation.length) {
-                console.log(`Pitfall P08: Pattern B ${name} ${element.subject.id}`);
+                log.push(`Pitfall P08: Pattern B ${name} ${element.subject.id}`);
             }
         });
     }
@@ -374,7 +343,7 @@ function P10() {
         if (!aux.length) {
             aux = store.getQuads(null, namedNode('http://www.w3.org/2002/07/owl#disjointUnionOf'), null);
             if (!aux.length) {
-                console.log(`Pitfall P10: Not disjoint axiom found`);
+                log.push(`Pitfall P10: Not disjoint axiom found`);
             }
         }
 
@@ -389,13 +358,13 @@ function P11_aux(ontologyElements, name) {
             //check domain
             aux = store.getQuads(element.subject.id, namedNode('http://www.w3.org/2000/01/rdf-schema#domain'), null);
             if (!aux.length) {
-                console.log(`Pitfall P11: Pattern A ${name} ${element.subject.id}`);
+                log.push(`Pitfall P11: Pattern A ${name} ${element.subject.id}`);
             }
 
             //check range
             aux = store.getQuads(element.subject.id, namedNode('http://www.w3.org/2000/01/rdf-schema#range'), null);
             if (!aux.length) {
-                console.log(`Pitfall P11: Pattern B ${name} ${element.subject.id}`);
+                log.push(`Pitfall P11: Pattern B ${name} ${element.subject.id}`);
             }
         });
     }
@@ -445,10 +414,10 @@ function P12_aux(ontologyElement, name, equivalentProperties, subProperties) {
                         });
                     }
                     else if (!equivalentProperties.length) {
-                        console.log(`Pitfall P12: Pattern A${name} ${ontologyElement[i]} ${ontologyElement[j]}`);
+                        log.push(`Pitfall P12: Pattern A${name} ${ontologyElement[i]} ${ontologyElement[j]}`);
                     }
                     if (equal) {
-                        console.log(`Pitfall P12: Pattern A ${name} ${ontologyElement[i]} ${ontologyElement[j]}`);
+                        log.push(`Pitfall P12: Pattern A ${name} ${ontologyElement[i]} ${ontologyElement[j]}`);
                     }
                 }
 
@@ -482,7 +451,7 @@ function P13() {
                 if (!aux.length) {
                     aux = store.getQuads(null, namedNode('http://www.w3.org/2002/07/owl#inverseOf'), namedNode(element.subject.id));
                     if (!aux.length) {
-                        console.log(`Pitfall P13: Pattern A ${element.subject.id}`);
+                        log.push(`Pitfall P13: Pattern A ${element.subject.id}`);
                         //Check if there is a possible inverse
                         if (suggestion.length) {
                             var match1, match2;
@@ -495,7 +464,7 @@ function P13() {
                                     match1 = store.getQuads(namedNode(element.subject.id), namedNode('http://www.w3.org/2000/01/rdf-schema#range'), null);
                                     match2 = store.getQuads(namedNode(suggest), namedNode('http://www.w3.org/2000/01/rdf-schema#domain'), null);
                                     if (match1.length && match2.length && match1[0].object.id == match2[0].object.id) {
-                                        console.log(`Pitfall P13: Pattern B ${suggest} ${element.subject.id}`);
+                                        log.push(`Pitfall P13: Pattern B ${suggest} ${element.subject.id}`);
                                     }
                                 }
 
@@ -525,7 +494,7 @@ function P19() {
                         if (!eq.length) {
                             eq = store.getQuads(namedNode(domain[i + 1].object.id), namedNode('http://www.w3.org/2002/07/owl#equivalentClass'), namedNode(domain[i].object.id));
                             if (!eq.length) {
-                                console.log(`Pitfall 19: Object Property Pattern A ${element}`);
+                                log.push(`Pitfall 19: Object Property Pattern A ${element}`);
                             }
                         }
                     }
@@ -539,7 +508,7 @@ function P19() {
                         if (!eq.length) {
                             eq = store.getQuads(namedNode(range[i + 1].object.id), namedNode('http://www.w3.org/2002/07/owl#equivalentClass'), namedNode(range[i].object.id));
                             if (!eq.length) {
-                                console.log(`Pitfall 19: Object Property Pattern B ${element}`);
+                                log.push(`Pitfall 19: Object Property Pattern B ${element}`);
                             }
                         }
                     }
@@ -559,7 +528,7 @@ function P19() {
                         if (!eq.length) {
                             eq = store.getQuads(namedNode(domain[i + 1].object.id), namedNode('http://www.w3.org/2002/07/owl#equivalentClass'), namedNode(domain[i].object.id));
                             if (!eq.length) {
-                                console.log(`Pitfall 19: Data Property Pattern A ${element}`);
+                                log.push(`Pitfall 19: Data Property Pattern A ${element}`);
                             }
                         }
                     }
@@ -569,7 +538,7 @@ function P19() {
             if (range.length > 1) {
                 for (var i = 0; i + 1 < range.length; i++) {
                     if (range[i].object.id != range[i + 1].object.id) {
-                        console.log(`Pitfall 19: Data Property Pattern B ${element}`);
+                        log.push(`Pitfall 19: Data Property Pattern B ${element}`);
                     }
                 }
             }
@@ -585,17 +554,17 @@ function P20_aux(ontologyElement, name) {
             label = store.getQuads(namedNode(element), namedNode('http://www.w3.org/2000/01/rdf-schema#label'), null);
             comment = store.getQuads(namedNode(element), namedNode('http://www.w3.org/2000/01/rdf-schema#comment'), null);
             if (!label.length) {
-                console.log(`Pitfall P20: Pattern B ${name} ${element}`);
+                log.push(`Pitfall P20: Pattern B ${name} ${element}`);
             }
             if (!comment.length) {
-                console.log(`Pitfall P20: Pattern C ${name} ${element}`);
+                log.push(`Pitfall P20: Pattern C ${name} ${element}`);
             }
             else if (label.length) {
                 if (label[0].object.id == comment[0].object.id) {
-                    console.log(`Pitfall P20: Pattern D ${name} ${element}`);
+                    log.push(`Pitfall P20: Pattern D ${name} ${element}`);
                 }
                 else if (label[0].object.id.length > comment[0].object.id.length) {
-                    console.log(`Pitfall P20: Pattern A ${name} ${element}`)
+                    log.push(`Pitfall P20: Pattern A ${name} ${element}`);
                 }
             }
         })
@@ -621,19 +590,19 @@ function P21() {
                 aux = element[0].lastIndexOf('/');
             }
             if (element.includes('other', aux)) {
-                console.log(`Pitfall 21: Class ${element} contains "other"`);
+                log.push(`Pitfall 21: Class ${element} contains "other"`);
             }
             if (element.includes('misc', aux)) {
-                console.log(`Pitfall 21: Class ${element} contains "misc"`);
+                log.push(`Pitfall 21: Class ${element} contains "misc"`);
             }
             if (element.includes('miscellanea', aux)) {
-                console.log(`Pitfall 21: Class ${element} contains "miscellanea"`);
+                log.push(`Pitfall 21: Class ${element} contains "miscellanea"`);
             }
             if (element.includes('miscellaneous', aux)) {
-                console.log(`Pitfall 21: Class ${element} contains "miscellaneous"`);
+                log.push(`Pitfall 21: Class ${element} contains "miscellaneous"`);
             }
             if (element.includes('miscellany', aux)) {
-                console.log(`Pitfall 21: Class ${element} contains "miscellany"`);
+                log.push(`Pitfall 21: Class ${element} contains "miscellany"`);
             }
         });
     }
@@ -658,7 +627,7 @@ function P22() {
 
     //check if all the ontology elements use the same delimeters
     if ((classContain != dataPropertyContain && classContain != 6 && dataPropertyContain != 6) || (classContain != objectPropertyContain && classContain != 6 && objectPropertyContain != 6) || (dataPropertyContain != objectPropertyContain && dataPropertyContain != 6 && objectPropertyContain != 6)) {
-        console.log(`Pitfall 22: There are ontology elements with different delimeters`);
+        log.push(`Pitfall 22: There are ontology elements with different delimeters`);
     }
 }
 
@@ -689,7 +658,7 @@ function checkNaminConvention(ontologyElement, name) {
             }
             character = ontologyElement[i][aux + 1];
             if ((character == character.toLowerCase()) != minus) {
-                console.log(`Pitfall P22: ${name} ${ontologyElement[i]} does not start as the others (lowercase or uppercase)`);
+                log.push(`Pitfall P22: ${name} ${ontologyElement[i]} does not start as the others (lowercase or uppercase)`);
             }
             if (ontologyElement[i].indexOf('-', aux) != -1) {
                 contain1++;
@@ -712,15 +681,15 @@ function checkNaminConvention(ontologyElement, name) {
     6 = no delimeters (simple words or compound words without delimeters)
     */
     if (contain1 != 0 && contain2 != 0) {
-        console.log(`Pitfall 22: There are ${name} with - and _ at the same time`);
+        log.push(`Pitfall 22: There are ${name} with - and _ at the same time`);
         return 0;
     }
     else if (contain1 != 0 && contain3 != 0) {
-        console.log(`Pitfall 22: There are ${name} with - and mayus as delimeters at the same time`);
+        log.push(`Pitfall 22: There are ${name} with - and mayus as delimeters at the same time`);
         return 1;
     }
     else if (contain2 != 0 && contain3 != 0) {
-        console.log(`Pitfall 22: There are ${name} with _ and mayus as delimeters at the same time`);
+        log.push(`Pitfall 22: There are ${name} with _ and mayus as delimeters at the same time`);
         return 2;
     }
     else if (contain2 != 0) {
@@ -746,11 +715,11 @@ function P24() {
         classes.forEach(element => {
             var subclass = store.getQuads(namedNode(element), namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#subClassOf'), namedNode(element));
             if (subclass.length) {
-                console.log(`Pitfall P24: Class it is own rdf:subClassOf ${element}`);
+                log.push(`Pitfall P24: Class it is own rdf:subClassOf ${element}`);
             }
             var equivalent = store.getQuads(namedNode(element), namedNode('http://www.w3.org/2002/07/owl#equivalentClass'), namedNode(element));
             if (equivalent.length) {
-                console.log(`Pitfall P24: Class it is own owl:equivalentClass ${element}`);
+                log.push(`Pitfall P24: Class it is own owl:equivalentClass ${element}`);
             }
         });
     }
@@ -758,11 +727,11 @@ function P24() {
         objectProperties.forEach(element => {
             var domain = store.getQuads(namedNode(element), namedNode('http://www.w3.org/2000/01/rdf-schema#domain'), namedNode(element));
             if (domain.length) {
-                console.log(`Pitfall P24: Object property it is own rdf:domain ${element}`);
+                log.push(`Pitfall P24: Object property it is own rdf:domain ${element}`);
             }
             var range = store.getQuads(namedNode(element), namedNode('http://www.w3.org/2000/01/rdf-schema#range'), namedNode(element));
             if (range.length) {
-                console.log(`Pitfall P24: Object property it is own rdf:range ${element}`);
+                log.push(`Pitfall P24: Object property it is own rdf:range ${element}`);
             }
         });
     }
@@ -770,7 +739,7 @@ function P24() {
         dataProperties.forEach(element => {
             var domain = store.getQuads(namedNode(element), namedNode('http://www.w3.org/2000/01/rdf-schema#domain'), namedNode(element));
             if (domain.length) {
-                console.log(`Pitfall P24: Data property it is own rdf:domain ${element}`);
+                log.push(`Pitfall P24: Data property it is own rdf:domain ${element}`);
             }
         });
     }
@@ -783,7 +752,7 @@ function P25() {
             var inverse = store.getQuads(namedNode(element), namedNode('http://www.w3.org/2002/07/owl#inverseOf'), namedNode(element));
             if (inverse.length) {
                 inverse.forEach(i => {
-                    console.log(`Pitfall 25: ${i.subject.id}`)
+                    log.push(`Pitfall 25: ${i.subject.id}`);
                 })
             }
         });
@@ -799,12 +768,12 @@ function P26() {
             var objectInverse = store.getQuads(null, namedNode('http://www.w3.org/2002/07/owl#inverseOf'), namedNode(element));
             //Check pattern A
             if (subjectInverse.length) {
-                console.log(`Pitfalls P26: Pattern A ${element}`);
+                log.push(`Pitfalls P26: Pattern A ${element}`);
             }
 
             //Check pattern B
             if (objectInverse.length) {
-                console.log(`Pitfalls P26: Pattern B ${element}`);
+                log.push(`Pitfalls P26: Pattern B ${element}`);
             }
         });
     }
@@ -830,7 +799,7 @@ function P27() {
                             if (!eq.length) {
                                 eq = store.getQuads(namedNode(d2), namedNode('http://www.w3.org/2002/07/owl#equivalentClass'), namedNode(d1));
                                 if (!eq.length) {
-                                    console.log(`Pitfall 27: Pattern A ${element.subject.id} ${element.object.id}`);
+                                    log.push(`Pitfall 27: Pattern A ${element.subject.id} ${element.object.id}`);
                                 }
                             }
                         }
@@ -849,7 +818,7 @@ function P27() {
                             if (!eq.length) {
                                 eq = store.getQuads(namedNode(r2), namedNode('http://www.w3.org/2002/07/owl#equivalentClass'), namedNode(r1));
                                 if (!eq.length) {
-                                    console.log(`Pitfall 27: Pattern B ${element.subject.id} ${element.object.id}`);
+                                    log.push(`Pitfall 27: Pattern B ${element.subject.id} ${element.object.id}`);
                                 }
                             }
                         }
@@ -867,10 +836,7 @@ function P28() {
         symmetricProperties.forEach(element => {
             var domain = getObjects(store.getQuads(namedNode(element), namedNode('http://www.w3.org/2000/01/rdf-schema#domain'), null));
             var range = getObjects(store.getQuads(namedNode(element), namedNode('http://www.w3.org/2000/01/rdf-schema#range'), null));
-            //console.log(domain);
-            //console.log(range);
             if (domain.length && range.length) {
-                //console.log(domain.equals(range));
                 domain.forEach(d => {
                     range.forEach(r => {
                         //Check if there are the same class
@@ -880,7 +846,7 @@ function P28() {
                             if (!eq.length) {
                                 eq = store.getQuads(namedNode(r), namedNode('http://www.w3.org/2002/07/owl#equivalentClass'), namedNode(d));
                                 if (!eq.length) {
-                                    console.log(`Pitfall 28: ${element}`);
+                                    log.push(`Pitfall 28: ${element}`);
                                 }
                             }
                         }
@@ -908,7 +874,7 @@ function P29() {
                             if (!eq.length) {
                                 eq = store.getQuads(namedNode(r.object.id), namedNode('http://www.w3.org/2002/07/owl#equivalentClass'), namedNode(d.object.id));
                                 if (!eq.length) {
-                                    console.log(`Pitfall P29: Object Property ${element.subject.id}`);
+                                    log.push(`Pitfall P29: Object Property ${element.subject.id}`);
                                 }
                             }
 
@@ -925,14 +891,12 @@ function P32() {
     var classes = store.getQuads(null, namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), namedNode('http://www.w3.org/2002/07/owl#Class'));
     if (classes.length) {
         var dictionary = {};
-        //console.log(dictionary['one']);
         classes.forEach(element => {
             var label = getObjects(store.getQuads(namedNode(element.subject.id), namedNode('http://www.w3.org/2000/01/rdf-schema#label'), null));
             if (label.length) {
-                //console.log(label);
                 if (label != '') {
                     if (dictionary[label] != undefined) {
-                        console.log(`Pitfall 32: Class ${element.subject.id} and ${dictionary[label]}`);
+                        log.push(`Pitfall 32: Class ${element.subject.id} and ${dictionary[label]}`);
                     }
                     dictionary[label] = element.subject.id;
                 }
@@ -965,7 +929,7 @@ function P34() {
     if (domain.length) {
         domain.forEach(element => {
             if (classes.find(el => el == element.object.id) == undefined) {
-                console.log(`Pitfall P34: ${element.object.id} pattern A and C`);
+                log.push(`Pitfall P34: ${element.object.id} pattern A and C`);
             }
         });
     }
@@ -975,7 +939,7 @@ function P34() {
         range.forEach(element => {
             var auxObjectPorperty = getSubjects(store.getQuads(namedNode(element.subject.id), namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), namedNode('http://www.w3.org/2002/07/owl#ObjectProperty')));
             if (auxObjectPorperty.find(el => el == element.subject.id) != undefined && classes.find(el => el == element.object.id) == undefined) {
-                console.log(`Pitfall P34: ${element.object.id} pattern B`);
+                log.push(`Pitfall P34: ${element.object.id} pattern B`);
             }
         });
     }
@@ -985,11 +949,11 @@ function P34() {
         subClass.forEach(element => {
             //Check pattern D
             if (classes.find(el => el == element.subject.id) == undefined) {
-                console.log(`Pitfall P34: ${element.subject.id} pattern D`);
+                log.push(`Pitfall P34: ${element.subject.id} pattern D`);
             }
             //Check pattern E
             if (classes.find(el => el == element.object.id) == undefined) {
-                console.log(`Pitfall P34: ${element.object.id} pattern E`);
+                log.push(`Pitfall P34: ${element.object.id} pattern E`);
             }
         });
     }
@@ -999,11 +963,11 @@ function P34() {
         disjointClass.forEach(element => {
             //Check pattern F
             if (classes.find(el => el == element.subject.id) == undefined) {
-                console.log(`Pitfall P34: ${element.subject.id} pattern F`);
+                log.push(`Pitfall P34: ${element.subject.id} pattern F`);
             }
             //Check pattern G
             if (classes.find(el => el == element.object.id) == undefined) {
-                console.log(`Pitfall P34: ${element.object.id} pattern G`);
+                log.push(`Pitfall P34: ${element.object.id} pattern G`);
             }
         });
     }
@@ -1013,11 +977,11 @@ function P34() {
         equivalentClass.forEach(element => {
             //Check pattern H
             if (classes.find(el => el == element.subject.id) == undefined) {
-                console.log(`Pitfall P34: ${element.subject.id} pattern H`);
+                log.push(`Pitfall P34: ${element.subject.id} pattern H`);
             }
             //Check pattern I
             if (classes.find(el => el == element.object.id) == undefined) {
-                console.log(`Pitfall P34: ${element.object.id} pattern I`);
+                log.push(`Pitfall P34: ${element.object.id} pattern I`);
             }
         });
     }
@@ -1038,7 +1002,7 @@ function P35() {
     if (domain.length != 0) {
         domain.forEach(element => {
             if (objectProperties.find(el => el == element.subject.id) == undefined && dataProperties.find(el => el == element.subject.id) == undefined) {
-                console.log(`Pitfall P35: ${element.subject.id} pattern A`);
+                log.push(`Pitfall P35: ${element.subject.id} pattern A`);
             }
         });
     }
@@ -1047,22 +1011,21 @@ function P35() {
     if (range.length != 0) {
         range.forEach(element => {
             if (objectProperties.find(el => el == element.subject.id) == undefined && dataProperties.find(el => el == element.subject.id) == undefined) {
-                console.log(`Pitfall P35: ${element.subject.id} pattern B and C`);
+                log.push(`Pitfall P35: ${element.subject.id} pattern B and C`);
             }
         });
     }
 
     //Check pattern D, E
     if (subProperty.length != 0) {
-        //console.log(subProperty);
         subProperty.forEach(element => {
             //Check pattern D
             if (objectProperties.find(el => el == element.subject.id) == undefined && dataProperties.find(el => el == element.subject.id) == undefined) {
-                console.log(`Pitfall P35: ${element.subject.id} pattern D`);
+                log.push(`Pitfall P35: ${element.subject.id} pattern D`);
             }
             //Check pattern E
             if (objectProperties.find(el => el == element.object.id) == undefined && dataProperties.find(el => el == element.object.id) == undefined) {
-                console.log(`Pitfall P35: ${element.subject.id} pattern E`);
+                log.push(`Pitfall P35: ${element.subject.id} pattern E`);
             }
         });
     }
@@ -1072,11 +1035,11 @@ function P35() {
         disjointProperty.forEach(element => {
             //Check pattern F
             if (objectProperties.find(el => el == element.subject.id) == undefined && dataProperties.find(el => el == element.subject.id) == undefined) {
-                console.log(`Pitfall P35: ${element.subject.id} pattern F`);
+                log.push(`Pitfall P35: ${element.subject.id} pattern F`);
             }
             //Check pattern G
             if (objectProperties.find(el => el == element.object.id) == undefined && dataProperties.find(el => el == element.object.id) == undefined) {
-                console.log(`Pitfall P35: ${element.object.id} pattern G`);
+                log.push(`Pitfall P35: ${element.object.id} pattern G`);
             }
         });
     }
@@ -1086,11 +1049,11 @@ function P35() {
         equivalentProperty.forEach(element => {
             //Check pattern H
             if (objectProperties.find(el => el == element.subject.id) == undefined && dataProperties.find(el => el == element.subject.id) == undefined) {
-                console.log(`Pitfall P35: ${element.subject.id} pattern H`);
+                log.push(`Pitfall P35: ${element.subject.id} pattern H`);
             }
             //Check pattern I
             if (objectProperties.find(el => el == element.object.id) == undefined && dataProperties.find(el => el == element.object.id) == undefined) {
-                console.log(`Pitfall P35: ${element.object.id} pattern I`);
+                log.push(`Pitfall P35: ${element.object.id} pattern I`);
             }
         })
     }
@@ -1100,11 +1063,11 @@ function P35() {
         inverseProperty.forEach(element => {
             //Check pattern J
             if (objectProperties.find(el => el == element.subject.id) == undefined) {
-                console.log(`Pitfall P35: ${element.subject.id} pattern J`);
+                log.push(`Pitfall P35: ${element.subject.id} pattern J`);
             }
             //Check pattern K
             if (objectProperties.find(el => el == element.object.id) == undefined) {
-                console.log(`Pitfall P35: ${element.object.id} pattern K`);
+                log.push(`Pitfall P35: ${element.object.id} pattern K`);
             }
         })
     }
@@ -1115,7 +1078,7 @@ function P36() {
     if (ontology.length != 0) {
         ontology = ontology[0].subject.id;
         if (ontology.includes('.ttl') || ontology.includes('.owl') || ontology.includes('.rdf') || ontology.includes('.n3') || ontology.includes('.rdfxml')) {
-            console.log('Pitfall P36');
+            log.push('Pitfall P36');
         }
     }
 
@@ -1124,20 +1087,19 @@ function P36() {
 function P38() {
     var ontology = store.getQuads(null, namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), namedNode('http://www.w3.org/2002/07/owl#Ontology'));
     if (ontology.length == 0) {
-        console.log('Pitfall P38');
+        log.push('Pitfall P38');
         P39();
     }
 }
 
 function P39() {
     if (!fileContents.includes('@base')) {
-        console.log('Pitfall P39');
+        log.push('Pitfall P39');
     }
 }
 
 function P41() {
     var license = store.getQuads(null, namedNode('http://purl.org/dc/terms/license'), null);
-    //console.log(license.length);
     if (license.length == 0) {
         license = store.getQuads(null, namedNode('http://purl.org/dc/elements/1.1/rights'), null);
         if (license.length == 0) {
@@ -1145,7 +1107,7 @@ function P41() {
             if (license.length == 0) {
                 license = store.getQuads(null, namedNode('http://www.w3.org/1999/xhtml/vocab#license'), null);
                 if (license.length == 0) {
-                    console.log('Pitfall P41');
+                    log.push('Pitfall P41');
                 }
             }
         }
@@ -1159,19 +1121,33 @@ async function readOntology(ontologyPath) {
 
         parser.parse(fileContents, (error, quad, prefixes) => {
             if (quad) {
-                //console.log(quad);
                 quads.push(quad);
+            }
+            else if(error){
+                console.log(`Error reading ontology: ${ontologyPath} is not an ontology or contains errors`);
+                console.log(`Error: ${error.message}`);
+                console.log('Execution terminated');
+                process.exit(-1);
             }
             else {
                 prefix = prefixes;
-                //console.log(quads);
                 store.addQuads(quads);
-                //writer.addQuads(quads);
-                //console.log("# That's all, folks!", prefixes);
             }
         });
         //writer.list
         return resolve(store);
     });
 }
+
+function writeLog(logPath) {
+    let now= new Date();
+    logPath = `${logPath}pitfalls_${now.getMonth()}-${now.getDate()}-${now.getFullYear()}_${now.getHours()}_${now.getMinutes()}_${now.getSeconds()}.txt`;
+    fs.writeFile(`${logPath}`, log.join('\n'), function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(`The Log file has been created successfully in ${logPath}`);
+        }
+    });
+  }
 
