@@ -1,2 +1,0 @@
-Ontology ../../../../pruebaOrdenadorTorre4/Current/Ontology/ontology.ttl is consistent: true
-The ttl file ../../../../pruebaOrdenadorTorre4/Current/Ontology/ontology.ttl/../ontologyAfterReasoning.ttl has been created successfully

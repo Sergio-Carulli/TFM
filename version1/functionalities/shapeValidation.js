@@ -43,22 +43,6 @@ export default async function shapeValidation(ontologyPath) {
       console.log(`Shacl file contains errors. That shapes are not going to be tested`);
       console.log(`Error: ${error.message}`);
     }
-
-/*
-    for (const result of report.results) {
-      // See https://www.w3.org/TR/shacl/#results-validation-result for details
-      // about each property
-      console.log(result.message)
-      console.log(result.path)
-      console.log(result.focusNode)
-      console.log(result.severity)
-      console.log(result.sourceConstraintComponent)
-      console.log(result.sourceShape)
-    }
-*/
-    // Validation report as RDF dataset
-    //console.log(report.dataset)
-    
   };
   writeLog('./logs/');
 }
@@ -75,7 +59,7 @@ function writeValidationReport(file,reportPath,result) {
 
 function writeLog(logPath) {
   let now= new Date();
-  logPath = `${logPath}shapeValidationLog_${now.getMonth()}-${now.getDate()}-${now.getFullYear()}_${now.getHours()}_${now.getMinutes()}_${now.getSeconds()}.txt`;
+  logPath = `${logPath}shapeValidationLog_${now.getMonth()+1}-${now.getDate()}-${now.getFullYear()}_${now.getHours()}_${now.getMinutes()}_${now.getSeconds()}.txt`;
   fs.writeFile(`${logPath}`, log.join('\n'), function (err) {
       if (err) {
           console.log(err);
@@ -84,5 +68,3 @@ function writeLog(logPath) {
       }
   });
 }
-
-//shapeValidation('../../../../pruebaOrdenadorTorre/Current/Ontology/ontology.ttl');

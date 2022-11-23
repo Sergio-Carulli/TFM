@@ -1,1 +1,0 @@
-New version succesfully updated in ../../../../pruebaOrdenadorTorre4/Current/Ontology/ontology.ttl

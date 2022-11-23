@@ -103,9 +103,7 @@ async function prpirp(h) {
   let result = await h.query(query);
   if (result.length != 0) {
     log.push('Rule prpirp:');
-    console.log(`${result[0].p.value} http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/2002/07/owl#IrreflexiveProperty`);
     log.push(`${result[0].p.value} http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/2002/07/owl#IrreflexiveProperty`);
-    console.log(`${result[0].x.value} ${result[0].p.value} ${result[0].x.value}`);
     log.push(`${result[0].x.value} ${result[0].p.value} ${result[0].x.value}`);
   }
 }
@@ -228,7 +226,7 @@ async function caxdw(h) {
 
 function writeLog(logPath) {
   let now= new Date();
-  logPath = `${logPath}dependencyManagementLog_${now.getMonth()}-${now.getDate()}-${now.getFullYear()}_${now.getHours()}_${now.getMinutes()}_${now.getSeconds()}.txt`;
+  logPath = `${logPath}dependencyManagementLog_${now.getMonth()+1}-${now.getDate()}-${now.getFullYear()}_${now.getHours()}_${now.getMinutes()}_${now.getSeconds()}.txt`;
   fs.writeFile(`${logPath}`, log.join('\n'), function (err) {
       if (err) {
           console.log(err);

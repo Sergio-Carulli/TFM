@@ -7,9 +7,6 @@ import fs from 'fs-extra'
 //const yaml = require('js-yaml');
 import yaml from 'js-yaml'
 
-//var rimraf = require("rimraf");
-import rimraf from 'rimraf'
-
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
 
@@ -260,16 +257,6 @@ function writeNewVersionOntology(localPath) {
 
 }
 
-function writeREADME(readmePath, text) {
-    fs.writeFile(readmePath, text, function (err) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(`The Readme file has been created successfully in ${readmePath}`);
-        }
-    });
-}
-
 function uploadOntology(localPath, username, email) {
     return new Promise((resolve, reject) => {
         //Configure github username
@@ -328,7 +315,7 @@ function uploadOntology(localPath, username, email) {
 
 function writeLog(logPath) {
     let now= new Date();
-    logPath = `${logPath}versioningLog_${now.getMonth()}-${now.getDate()}-${now.getFullYear()}_${now.getHours()}_${now.getMinutes()}_${now.getSeconds()}.txt`;
+    logPath = `${logPath}versioningLog_${now.getMonth()+1}-${now.getDate()}-${now.getFullYear()}_${now.getHours()}_${now.getMinutes()}_${now.getSeconds()}.txt`;
     fs.writeFile(`${logPath}`, log.join('\n'), function (err) {
         if (err) {
             console.log(err);
@@ -336,105 +323,4 @@ function writeLog(logPath) {
             console.log(`The Log file has been created successfully in ${logPath}`);
         }
     });
-}
-
-function writeNewFiles(localPath) {
-    return new Promise((resolve, reject) => {
-        //Create folders in Current
-        fs.mkdirSync(`${localPath}/../../../Current/Ontology`, { recursive: true }, (err) => {
-            if (err) {
-                console.log(err);
-            };
-        });
-        fs.mkdirSync(`${localPath}/../../../Current/Diagrams`, (err) => {
-            if (err) {
-                console.log(err);
-            };
-        });
-        fs.mkdirSync(`${localPath}/../../../Current/Test`, (err) => {
-            if (err) {
-                console.log(err);
-            };
-        });
-        fs.mkdirSync(`${localPath}/../../../Current/Documentation`, (err) => {
-            if (err) {
-                console.log(err);
-            };
-        });
-        fs.mkdirSync(`${localPath}/../../../Current/Requirements`, (err) => {
-            if (err) {
-                console.log(err);
-            };
-        });
-        fs.mkdirSync(`${localPath}/../../../Current/Requirements/ORSD`, (err) => {
-            if (err) {
-                console.log(err);
-            };
-        });
-        fs.mkdirSync(`${localPath}/../../../Current/Requirements/finalVersion`, (err) => {
-            if (err) {
-                console.log(err);
-            };
-        });
-        fs.mkdirSync(`${localPath}/../../../Current/Requirements/testSuite`, (err) => {
-            if (err) {
-                console.log(err);
-            };
-        });
-
-        //Create README.md in each subfolder of Current
-        var text = '#Ontology\n Para guardar el ttl con la ontología'
-        console.log(`${localPath}/../../../Current/Ontology/README.md`);
-        writeREADME(`${localPath}/../../../Current/Ontology/README.md`, text);
-
-        text = '#Diagrams\n Para guardar imagenes con los diagramas'
-        writeREADME(`${localPath}/../../../Current/Diagrams/README.md`, text);
-
-        text = '#Test\n Para guardar las sparql queries de ejemplo'
-        writeREADME(`${localPath}/../../../Current/Test/README.md`, text);
-
-        text = '#Documentation\n Documentacion html'
-        writeREADME(`${localPath}/../../../Current/Documentation/README.md`, text);
-
-        text = '#Requirements\n Se almacenara todo lo que incluyan los requirements'
-        writeREADME(`${localPath}/../../../Current/Requirements/README.md`, text);
-
-        //Create README.md in each subfolder of Requirements
-        text = '#ORSD\n Se almacenara el ORSD'
-        writeREADME(`${localPath}/../../../Current/Requirements/ORSD/README.md`, text);
-
-        text = '#Requirements Final Version\n Se almacenara la version final de los requirements'
-        writeREADME(`${localPath}/../../../Current/Requirements/finalVersion/README.md`, text);
-
-        text = '#Test Suite\n Se almacenara los test suites'
-        writeREADME(`${localPath}/../../../Current/Requirements/testSuite/README.md`, text);
-
-        //Write ontology in the folder release
-        writeOntology(`${localPath}/../../../Current/Ontology/ontology.ttl`);
-
-        resolve();
-
-    });
-}
-
-function emptyDirectory(directory) {
-    return new Promise((resolve, reject) => {
-        //remove directory
-        rimraf(directory, function () {
-            //create empty directory
-            fs.mkdirSync(directory, (err) => {
-                if (err) {
-                    console.log(err);
-                };
-            });
-        });
-        setTimeout(() => {
-            resolve();
-        }, 1000);
-    });
-
-}
-
-function imprimirQUADS() {
-    writer.end((error, result) => console.log(result));
 }

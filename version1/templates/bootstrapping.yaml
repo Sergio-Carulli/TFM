@@ -1,5 +1,5 @@
---- # Metadata
-  ontology: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt
+--- # Ontology Metadata
+  ontology: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#
   license: http://purl.org/dc/terms/0.1.1
   creator: creator1, creator2, creator3
   contributor: contributor 1
@@ -20,7 +20,7 @@
   diagram:
 
 --- # Prefix
-  aux: http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#
+  aux: http://www.studyroomsmadrid.es/studyRoom/ontology/examplePrefix#
 
 
 --- # Class and metadata 
@@ -28,11 +28,11 @@
     label: studyRoom
     definition: a physical study room
   aux:Location:
-  aux:Student: student
+  aux:Student:
 
 --- # Object properties and metadata
   aux:isLocated: 
-    domain: aux:StudyRoom
+    domain: StudyRoom
     range: aux:Location
   aux:go: 
     domain: aux:Student
@@ -48,8 +48,8 @@
     label: capacity
 
 --- # Repo
-  repository local path: ../../../../pruebaOrdenadorTorre4
-  url: https://github.com/Sergio-Carulli/pruebaOrdenadorTorre3.git
+  repository local path: ../../../../demo
+  url: https://github.com/Sergio-Carulli/demo.git
   github username: Sergio-Carulli
   github email: sergiomario.carulli.perez@alumnos.upm.es
 

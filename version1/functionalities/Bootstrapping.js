@@ -849,11 +849,6 @@ function createRepo(repo) {
                     console.log(err);
                 };
             });
-            fs.mkdirSync(`${localPath}/Data`, (err) => {
-                if (err) {
-                    console.log(err);
-                };
-            });
             fs.mkdirSync(`${localPath}/Current/Ontology`, { recursive: true }, (err) => {
                 if (err) {
                     console.log(err);
@@ -864,7 +859,12 @@ function createRepo(repo) {
                     console.log(err);
                 };
             });
-            fs.mkdirSync(`${localPath}/Current/Test`, (err) => {
+            fs.mkdirSync(`${localPath}/Current/Queries`, (err) => {
+                if (err) {
+                    console.log(err);
+                };
+            });
+            fs.mkdirSync(`${localPath}/Current/Examples`, (err) => {
                 if (err) {
                     console.log(err);
                 };
@@ -894,17 +894,9 @@ function createRepo(repo) {
                     console.log(err);
                 };
             });
-            fs.mkdirSync(`${localPath}/Data/useCases`, (err) => {
-                if (err) {
-                    console.log(err);
-                };
-            });
             //Create README.md in each folder
             text = '#Release\n The previous versions of the ontology are going to be stored in this folder.\nEach version is stored in a folder whose name is the ontology version.'
             writeREADME(`${localPath}/Release/README.md`, text);
-
-            text = '#Data\n Se almacenaran todos los datos de entrada menos los use cases'
-            writeREADME(`${localPath}/Data/README.md`, text);
 
             text = '#Current\n Ultima version de la ontologia. Con las mismas carpetas que las versiones de release'
             writeREADME(`${localPath}/Current/README.md`, text);
@@ -916,8 +908,11 @@ function createRepo(repo) {
             text = '#Diagrams\n Para guardar imagenes con los diagramas'
             writeREADME(`${localPath}/Current/Diagrams/README.md`, text);
 
-            text = '#Test\n Para guardar las sparql queries de ejemplo'
-            writeREADME(`${localPath}/Current/Test/README.md`, text);
+            text = '#Queries\n Para guardar las sparql queries de ejemplo'
+            writeREADME(`${localPath}/Current/Queries/README.md`, text);
+
+            text = '#Queries\n Para guardar instancias de ejemplo'
+            writeREADME(`${localPath}/Current/Examples/README.md`, text);
 
             text = '#Documentation\n Documentacion html'
             writeREADME(`${localPath}/Current/Documentation/README.md`, text);
@@ -934,10 +929,6 @@ function createRepo(repo) {
 
             text = '#Test Suite\n Se almacenara los test suites'
             writeREADME(`${localPath}/Current/Requirements/testSuite/README.md`, text);
-
-            //Create README.md in each subfolder of data
-            text = '#Use Cases\n Se almacenaran los uses cases'
-            writeREADME(`${localPath}/Data/useCases/README.md`, text);
 
             //Write the ontology in folder Current
             writeOntology(`${localPath}/Current/Ontology/ontology.ttl`).then(() => {
@@ -1066,7 +1057,7 @@ async function uploadOntology(localPath, url, username, email) {
 
 function writeLog(logPath) {
     let now= new Date();
-    logPath = `${logPath}bootstrapingLog_${now.getMonth()}-${now.getDate()}-${now.getFullYear()}_${now.getHours()}_${now.getMinutes()}_${now.getSeconds()}.txt`;
+    logPath = `${logPath}bootstrapingLog_${now.getMonth()+1}-${now.getDate()}-${now.getFullYear()}_${now.getHours()}_${now.getMinutes()}_${now.getSeconds()}.txt`;
     fs.writeFile(`${logPath}`, log.join('\n'), function (err) {
         if (err) {
             console.log(err);

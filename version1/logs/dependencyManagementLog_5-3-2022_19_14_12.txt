@@ -1,7 +1,0 @@
-Ontology ../../../../pruebaInconsistencias/ontologyConInconsistencias.ttl is consistent: false
-Explanation of why the ontology is not consistent:
-Rule caxdw:
-http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Vegetarian http://www.w3.org/2002/07/owl#disjointWith http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Carnivore
-http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Ana http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Vegetarian
-http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Ana http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Carnivore
-The ttl file ../../../../pruebaInconsistencias/ontologyConInconsistencias.ttl/../ontologyAfterReasoning.ttl has been created successfully

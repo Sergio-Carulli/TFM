@@ -9,7 +9,7 @@ const { exec } = child_process;
 
 //Check the input
 //example of valid input:
-//node index.js --bootstrapping ./templates/data.yaml
+//node index.js --bootstrapping ./templates/bootstrapping.yaml
 //node index.js --versioning ./templates/versioning.yaml
 //node index.js --shapeValidation ../../../../pruebaOrdenadorTorre4/Current/Ontology/ontology.ttl
 //node index.js --dependencyManagement ../../../../pruebaInconsistencias/ontologyConInconsistencias.ttl
@@ -17,6 +17,7 @@ const { exec } = child_process;
 //node index.js --dependencyManagement ../../../../pruebaOrdenadorTorre4/Current/Ontology/ontology.ttl
 //node pitfalls.js ../../../../pruebaOrdenadorTorre4/Current/Ontology/ontology.ttl
 //node pitfalls.js ../../../../pruebaPitfalls/ontologySinInconsistencias.ttl
+//node pitfalls.js ../../../../pruebaPitfalls/swc_2009-05-09.owl
 //node pitfalls.js ../../../../pruebaPitfalls/P41.ttl
 
 if(process.argv.length != 4){

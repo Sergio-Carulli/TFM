@@ -1,0 +1,27 @@
+Pitfall P08 (Pattern A): Class http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Location lacks an
+                rdfs:label annotation
+Pitfall P08 (Pattern B): Class http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Location lacks an
+                rdfs:comment annotation
+Pitfall P08 (Pattern A): Class http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Student lacks an
+                rdfs:label annotation
+Pitfall P08 (Pattern B): Class http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#Student lacks an
+                rdfs:comment annotation
+Pitfall P08 (Pattern A): Object Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#isLocated lacks an
+                rdfs:label annotation
+Pitfall P08 (Pattern B): Object Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#isLocated lacks an
+                rdfs:comment annotation
+Pitfall P08 (Pattern B): Object Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#go lacks an
+                rdfs:comment annotation
+Pitfall P08 (Pattern A): Data Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#hasName lacks an
+                rdfs:label annotation
+Pitfall P08 (Pattern B): Data Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#hasName lacks an
+                rdfs:comment annotation
+Pitfall P08 (Pattern B): Data Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#hasCapacity lacks an
+                rdfs:comment annotation
+Pitfall P10: Not disjoint axiom is found
+Pitfall P11 (Pattern B): Object Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#go lacks range
+Pitfall P11 (Pattern B): Data Property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#hasCapacity lacks range
+Pitfall P13 (Pattern A): Object property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#isLocated is not defined as symmetric property (owl:SymmetricProperty) and
+                        does not have any inverse property defined (owl:inverseOf )
+Pitfall P13 (Pattern A): Object property http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt2#go is not defined as symmetric property (owl:SymmetricProperty) and
+                        does not have any inverse property defined (owl:inverseOf )

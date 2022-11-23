@@ -1,0 +1,2 @@
+Ontology ../../../../demo/Current/Ontology/ontology.ttl is consistent: true
+The ttl file ../../../../demo/Current/Ontology/ontology.ttl/../ontologyAfterReasoning.ttl has been created successfully

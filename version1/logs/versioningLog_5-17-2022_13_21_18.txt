@@ -1,4 +1,0 @@
-Old version succesfully stored in ../../../../pruebaOrdenadorTorre5/Current/Ontology/ontology.ttl/../../../Release/1.0.0
-New version succesfully updated in ../../../../pruebaOrdenadorTorre5/Current/Ontology/ontology.ttl
-error: Command failed: cd ../../../../pruebaOrdenadorTorre5/Current/Ontology/ontology.ttl/../../../ && git add . && git commit -m "commit" && git push
-fatal: not a git repository (or any of the parent directories): .git

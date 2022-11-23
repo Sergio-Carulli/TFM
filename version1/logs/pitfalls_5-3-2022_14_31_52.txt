@@ -1,4 +1,0 @@
-Pitfall P10: Not disjoint axiom found
-Pitfall P38
-Pitfall P39
-Pitfall P41
